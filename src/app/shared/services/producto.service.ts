@@ -1,30 +1,39 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Respuesta } from '../interfaces/respuesta';
-import { environment } from '../../../environments/environment';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { clienteAxios } from '../../helpers/axiosClient';
+import { Respuesta } from '../interfaces/respuestaProducto';
+import { UnProducto } from '../interfaces/unProducto';
+import { Producto } from '../interfaces/producto';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
 
-  private apiBaseUrl: string = `${environment.API}/productos`;
   public productos: any = [];
   // 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(
+    private router: Router,
+    
+  ) { }
   //
   obtenerProductos = async () => {
 
   };
 
-  obtenerProductosNuevos():Observable<Respuesta['productos']>{
-    const url: string = `${this.apiBaseUrl}/nuevos`;
+  async obtenerProductosNuevos() {
+    const url: string = '/productos/nuevos';
+    const data: Respuesta = (await clienteAxios.get(url)).data;
+    //console.log(data);
+    return data;
+  }
 
-    return this.http.get<Respuesta['productos']>(url).
-      pipe(
-        catchError(() => of([]))
-      )
+  async obtenerProducto(id:Producto['_id']) {
+    const url: string = '/productos';
+    const data: UnProducto = (await clienteAxios.get(`${url}/${id}`)).data;
+    console.log(data);
+    return data;
   }
 }

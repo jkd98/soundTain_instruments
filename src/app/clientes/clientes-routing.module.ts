@@ -14,7 +14,7 @@ const routes: Routes = [
         children: [
             { path:'inicio', component:HomePageComponent },
             { path:'instrumentos', component:InstrumentosGeneralComponent },
-            { path:'instrumento', component:ProductoDetallesComponent },
+            { path:'instrumento/:ins', component:ProductoDetallesComponent },
             { path:'nosotros', component:NosotrosPageComponent },
             { path:'carrito', component:CarritoComponent  },
             { path:'**', redirectTo:'inicio'  }

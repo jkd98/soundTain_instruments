@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit,Input } from '@angular/core';
+import { Producto } from '../../../shared/interfaces/producto';
 @Component({
   selector: 'app-listado-productos',
   templateUrl: './listado-productos.component.html',
@@ -10,7 +11,7 @@ export class ListadoProductosComponent implements AfterViewInit{
   public currentIndex = 0;
   public totalItems = 10; // Número total de productos en el carrusel
   public itemsPerView = 4; // Cantidad de productos visibles al mismo tiempo (ajusta según tu diseño responsivo)
-  @Input() productos:any = [];
+  @Input('productos') productos:Producto[] = [];
   
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { ProductoService } from '../../../shared/services/producto.service';
-import { Respuesta } from '../../../shared/interfaces/respuesta';
+import { Respuesta } from '../../../shared/interfaces/respuestaProducto';
+import { Producto } from '../../../shared/interfaces/producto';
 
 @Component({
   selector: 'app-home-page',
@@ -9,17 +10,18 @@ import { Respuesta } from '../../../shared/interfaces/respuesta';
 })
 export class HomePageComponent implements OnInit{
   //
-  public productos:Respuesta['productos'] = [];
+  public productosNvs:Producto[] = [];
   //
   constructor(private productosService:ProductoService) {  }
   //
   ngOnInit(): void {
-    this.productosService.obtenerProductosNuevos().subscribe(
-      productos => {
-        this.productos = productos;
-        console.log(this.productos);
-      }
-    )
+    this.productosNuevos();
 
+  }
+
+  async productosNuevos(){
+    const data:Respuesta = await this.productosService.obtenerProductosNuevos();
+    this.productosNvs = data.productos;
+    console.log(this.productosNvs);
   }
 }

@@ -4,15 +4,13 @@
     </div>
 
     <div class="producto__contenido">
-        <h3 class="producto__nombre">Lukather</h3>
+        <h3 class="producto__nombre">{{producto.nombre}}</h3>
         <p class="producto__descripcion">
-            Lorem ipsum dolor sit amet consectetur, 
-            adipisicing elit. Ullam veniam omnis 
-            praesentium.
+            {{producto.descripcion}}
         </p>
         <p class="producto__precio">
-            $299
+            ${{producto.precio}}
         </p>
-        <a class="producto__enlace" routerLink="/clientes/instrumento">Ver Producto</a>
+        <a class="producto__enlace" routerLink="/clientes/instrumento/{{producto._id}}">Ver Producto</a>
     </div>
 </div><!-- .producto -->
