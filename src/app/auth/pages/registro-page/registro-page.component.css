@@ -1,0 +1,24 @@
+.formulario-contenedor {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.formulario card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    margin-right: 8px;
+  }
+
+  

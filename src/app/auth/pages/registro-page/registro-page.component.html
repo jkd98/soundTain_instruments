@@ -1,0 +1,71 @@
+<!-- Formulario de registro -->
+<div class="formulario-contenedor">
+  <mat-card class="formulario-card">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="personalFormGroup">
+        <form [formGroup]="personalFormGroup">
+          <ng-template matStepLabel>Información Personal</ng-template>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellido" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required type="email">
+          </mat-form-field>
+
+          <div class="boton-container">
+            <button mat-raised-button color="primary" matStepperNext
+              [disabled]="personalFormGroup.invalid">Siguiente</button>
+            <a routerLink="/auth/login" mat-raised-button color="primary">Volver</a>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="securityFormGroup">
+        <form [formGroup]="securityFormGroup">
+          <ng-template matStepLabel>Seguridad</ng-template>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="pass" type="password" required>
+          </mat-form-field>
+
+          <div class="boton-container">
+            <button mat-raised-button matStepperPrevious>Atrás</button>
+            <button mat-raised-button color="primary" matStepperNext
+              [disabled]="securityFormGroup.invalid">Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="additionalFormGroup">
+        <form [formGroup]="additionalFormGroup">
+          <ng-template matStepLabel>Información Adicional</ng-template>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControklName="phone">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Rol</mat-label>
+            <input matInput formControlName="rol">
+          </mat-form-field>
+
+          <div class="boton-container">
+            <button mat-raised-button matStepperPrevious>Atrás</button>
+            <button mat-raised-button color="primary" (click)="onSubmit()">Finalizar</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </mat-card>
+</div>

@@ -1,0 +1,30 @@
+ /* Estilos iniciales para el contenedor del logotipo */
+ .logotipocarrito {
+  display: inline-block;
+  transition: transform 0.5s ease; /* Animación de transformación */
+}
+
+/* Efecto cuando pasas el cursor por encima */
+.logotipocarrito:hover {
+  transform: scale(1.2); /* Escala del logo al 120% */
+}
+.logotipocarrito{
+ margin: 0 auto;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.logotipocarrito img{
+ width: 10rem;
+ height: 10rem;
+ }
+
+
+
+ .centrarObjetos{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }

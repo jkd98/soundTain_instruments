@@ -1,0 +1,35 @@
+<div class="contenedor">
+    <app-nav-bar></app-nav-bar>
+</div>
+
+<div class="contenido">
+    <!-- Contenedor izquierda: filtros -->
+    <div class="izquierda-column">
+        <div class="opciones-filtros">
+            <h4>Filtros:</h4>
+            <a href="#">Guitarras</a><br>
+            <a href="#">Baterías</a><br>
+            <a href="#">Viento</a><br>
+
+            <!-- Filtro de precio -->
+            <h4>Filtrar por Precio:</h4>
+            <mat-form-field class="precio">
+                <mat-label>Precio Mínimo</mat-label>
+                <input matInput type="number">
+            </mat-form-field>
+            <mat-form-field class="precio">
+                <mat-label>Precio Máximo</mat-label>
+                <input matInput type="number">
+            </mat-form-field>
+        </div>
+    </div>
+    <!-- Contenedor derecha: tarjetas -->
+    <div class="derecha-column">
+        <h2>Productos</h2>
+        <div class="productos-modulo">
+            <app-listado-productos></app-listado-productos>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
