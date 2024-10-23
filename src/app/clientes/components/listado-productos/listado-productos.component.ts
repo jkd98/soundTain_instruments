@@ -10,7 +10,7 @@ export class ListadoProductosComponent implements AfterViewInit{
   public currentIndex = 0;
   public totalItems = 10; // Número total de productos en el carrusel
   public itemsPerView = 4; // Cantidad de productos visibles al mismo tiempo (ajusta según tu diseño responsivo)
-  @Input() productos:any = []
+  @Input() productos:any = [];
   
 
 

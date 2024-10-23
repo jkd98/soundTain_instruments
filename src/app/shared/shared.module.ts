@@ -22,7 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     CommonModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
   ],
   exports: [
     NavBarComponent,

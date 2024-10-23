@@ -9,6 +9,7 @@ import { ClientesModule } from './clientes/clientes.module';
 import { VentasModule } from './ventas/ventas.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
+
   ],
   bootstrap: [AppComponent]
 })
