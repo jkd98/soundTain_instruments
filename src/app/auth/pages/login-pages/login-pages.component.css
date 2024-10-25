@@ -31,16 +31,9 @@
   justify-content: center;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+
 .login-container {
-  background-color: white;
+  background-color: var(--blanco);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -50,12 +43,12 @@ body {
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--azul);
 }
 label {
   display: block;
   margin-bottom: 8px;
-  color: #555;
+  color: var(--azul);
 }
 input[type="email"],
 input[type="password"] {
@@ -80,8 +73,11 @@ input[type="submit"]:hover {
 .login-container p {
   text-align: center;
   margin-top: 20px;
+  color:var(--azul);
 }
 .login-container a {
+  display: inline-block;
   color: var(--naranja);
   text-decoration: none;
+  width: 100%;
 }

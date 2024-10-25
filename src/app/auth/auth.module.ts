@@ -14,11 +14,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { LayoutAuthComponent } from './pages/layout-auth/layout-auth.component';
+import { MsgPageComponent } from './pages/msg-page/msg-page.component';
+import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.component';
 
 @NgModule({
   declarations: [
     LoginPagesComponent,
-    RegistroPageComponent
+    RegistroPageComponent,
+    LayoutAuthComponent,
+    MsgPageComponent,
+    ConfirmarPageComponent
   ],
   imports: [
     CommonModule,
