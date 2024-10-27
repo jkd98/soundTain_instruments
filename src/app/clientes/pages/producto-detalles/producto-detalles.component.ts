@@ -20,7 +20,7 @@ export class ProductoDetallesComponent implements OnInit{
         id = params['ins'];
       }
     );
-    console.log(id);
+    //console.log(id);
     this.obtenerProducto(id);
   }
 

@@ -1,11 +1,14 @@
 <!-- Formulario de registro -->
 <div class="formulario-contenedor">
   <mat-card class="formulario-card">
+    <div class="contenedor">
+      <h1 class="c-azl">Crear cuenta</h1>
+    </div>
     <mat-horizontal-stepper [linear]="true" #stepper>
-      <mat-step [stepControl]="personalFormGroup">
+      <mat-step [stepControl]="personalFormGroup" >
         <form [formGroup]="personalFormGroup">
           <ng-template matStepLabel>Información Personal</ng-template>
-
+          
           <mat-form-field appearance="fill" class="formulario-campo">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="nombre" required>
@@ -21,10 +24,10 @@
             <input matInput formControlName="email" required type="email">
           </mat-form-field>
 
-          <div class="boton-container">
-            <button mat-raised-button color="primary" matStepperNext
+          <div class="btns">
+            <button class="btn-Original" matStepperNext
               [disabled]="personalFormGroup.invalid">Siguiente</button>
-            <a routerLink="/auth/login" mat-raised-button color="primary">Volver</a>
+            <a routerLink="/auth/login" class="btn-Original">Volver</a>
           </div>
         </form>
       </mat-step>
@@ -38,9 +41,9 @@
             <input matInput formControlName="pass" type="password" required>
           </mat-form-field>
 
-          <div class="boton-container">
-            <button mat-raised-button matStepperPrevious>Atrás</button>
-            <button mat-raised-button color="primary" matStepperNext
+          <div class="btns">
+            <button class="btn-Original" matStepperPrevious>Atrás</button>
+            <button class="btn-Original" matStepperNext
               [disabled]="securityFormGroup.invalid">Siguiente</button>
           </div>
         </form>
@@ -55,9 +58,9 @@
             <input matInput formControklName="phone">
           </mat-form-field>
 
-          <div class="boton-container">
-            <button mat-raised-button matStepperPrevious>Atrás</button>
-            <button mat-raised-button color="primary" (click)="onSubmit()">Finalizar</button>
+          <div class="btns">
+            <button class="btn-Original" matStepperPrevious>Atrás</button>
+            <button class="btn-Original" (click)="onSubmit()">Finalizar</button>
           </div>
         </form>
       </mat-step>

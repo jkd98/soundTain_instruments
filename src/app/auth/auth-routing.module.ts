@@ -4,6 +4,9 @@ import { LoginPagesComponent } from './pages/login-pages/login-pages.component';
 import { LayoutAuthComponent } from './pages/layout-auth/layout-auth.component';
 import { RegistroPageComponent } from './pages/registro-page/registro-page.component';
 import { MsgPageComponent } from './pages/msg-page/msg-page.component';
+import { OlvidePassComponent } from './pages/olvide-pass/olvide-pass.component';
+import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.component';
+import { NuevaPassComponent } from './pages/nueva-pass/nueva-pass.component';
 
 const routes: Routes = [
   {
@@ -12,7 +15,11 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginPagesComponent },
       { path: 'registro', component: RegistroPageComponent },
-      { path: 'msg', component: MsgPageComponent },
+      { path: 'confirmar', component: ConfirmarPageComponent },
+      { path: 'confirmar/:tkn', component: ConfirmarPageComponent },
+      { path: 'recuperar-cuenta', component: OlvidePassComponent },
+      { path: 'nueva-pass', component: NuevaPassComponent },
+      { path: 'nueva-pass/:tkn', component: NuevaPassComponent },
       { path: '**', redirectTo: 'login' }
     ]
   },

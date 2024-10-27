@@ -17,6 +17,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { LayoutAuthComponent } from './pages/layout-auth/layout-auth.component';
 import { MsgPageComponent } from './pages/msg-page/msg-page.component';
 import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.component';
+import { OlvidePassComponent } from './pages/olvide-pass/olvide-pass.component';
+import { AlertaComponent } from './components/alerta/alerta.component';
+import { NuevaPassComponent } from './pages/nueva-pass/nueva-pass.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.co
     RegistroPageComponent,
     LayoutAuthComponent,
     MsgPageComponent,
-    ConfirmarPageComponent
+    ConfirmarPageComponent,
+    OlvidePassComponent,
+    AlertaComponent,
+    NuevaPassComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -8,12 +8,16 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login-pages.component.html',
   styleUrl: './login-pages.component.css'
 })
-export class LoginPagesComponent {
+export class LoginPagesComponent implements OnInit{
 
   public loginForm!: FormGroup;
 
 
   constructor(private fb: FormBuilder, private router:Router, private authService:AuthService) {
+    
+  }
+  
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       pass: ['', Validators.required]
