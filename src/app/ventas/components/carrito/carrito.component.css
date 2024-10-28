@@ -20,11 +20,17 @@
  height: 10rem;
  }
 
-
+ .centrar-boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Puedes ajustar el espacio superior según prefieras */
+}
 
  .centrarObjetos{
   margin: 0 auto;
   display: flex;
+  width: 10rem;
   align-items: center;
   justify-content: center;
  }
