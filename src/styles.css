@@ -50,7 +50,9 @@ img {
 }
 
 .btns {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
     width: 100%;
 }
 
@@ -82,9 +84,6 @@ img {
     /* Color del icono al pasar el mouse */
 }
 
-
-
-
 [class*="btn-Original--ch"] {
     display: inline-block;
     padding: 1rem 2rem;
@@ -111,6 +110,37 @@ img {
     color: var(--naranja);
     /* Color del icono al pasar el mouse */
 }
+
+[class*="btn-Original-azul"] {
+    display: block;
+    padding: 1rem 2rem;
+    background-color: var(--azul);
+    /* Fondo naranja al pasar el mouse */
+    color: var(--blanco);
+    /* Color de los iconos */
+    border-radius: .5rem;
+    /* Bordes redondeados */
+    border: 1px solid var(--blanco);
+    transition: background-color 0.3s, color 0.3s;
+    /* Transición suave */
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+/* Efecto hover */
+[class*="btn-Original-azul"]:hover {
+    background-color: transparent;
+    border: 1px solid var(--naranja);
+    /* Fondo blanco */
+    color: var(--naranja);
+    /* Color del icono al pasar el mouse */
+}
+
+
+
+
 
 .text-center {
     text-align: center;

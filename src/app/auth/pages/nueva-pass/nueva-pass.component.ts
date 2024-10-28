@@ -38,8 +38,7 @@ export class NuevaPassComponent {
     console.log(id);
 
     if (id) {
-      this.titulo = 'Cuenta confirmada';
-      this.msg = 'La cuenta se confirmo correctamente, ¡ya puedes iniciar sesión!';
+      this.msg = 'Se ha guardado la nueva contraseña, ¡ya puedes iniciar sesión!';
       this.enlace = 'Iniciar Sesión';
       this.url = '/auth/login';
       //comprobar token
@@ -51,7 +50,6 @@ export class NuevaPassComponent {
   }
   onSubmit() {
     this.valid = false;
-
     if (this.nwPassForm.valid && this.valid) {
       console.log('Formulario válido:', this.nwPassForm.value);
       const pass = this.nwPassForm.get('pass')!.value;

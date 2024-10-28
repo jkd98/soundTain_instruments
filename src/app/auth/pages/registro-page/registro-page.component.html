@@ -27,7 +27,7 @@
           <div class="btns">
             <button class="btn-Original" matStepperNext
               [disabled]="personalFormGroup.invalid">Siguiente</button>
-            <a routerLink="/auth/login" class="btn-Original">Volver</a>
+            <a routerLink="/auth/login" class="btn-Original-azul">Volver</a>
           </div>
         </form>
       </mat-step>
@@ -43,7 +43,7 @@
 
           <div class="btns">
             <button class="btn-Original" matStepperPrevious>Atrás</button>
-            <button class="btn-Original" matStepperNext
+            <button class="btn-Original-azul" matStepperNext
               [disabled]="securityFormGroup.invalid">Siguiente</button>
           </div>
         </form>
@@ -60,7 +60,7 @@
 
           <div class="btns">
             <button class="btn-Original" matStepperPrevious>Atrás</button>
-            <button class="btn-Original" (click)="onSubmit()">Finalizar</button>
+            <button class="btn-Original-azul" (click)="onSubmit()">Finalizar</button>
           </div>
         </form>
       </mat-step>

@@ -41,3 +41,7 @@ mat-form-field {
 a,[input="submit"]{
   font-size: 1.6rem;
 }
+
+.btns {
+    gap: 3rem;
+}
