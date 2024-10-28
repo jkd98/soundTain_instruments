@@ -4,14 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 90%;
 }
 
-@media(min-width:1024px) {
-  .login__contenedor {
-    width: 50%;
-  }
-}
 
 .centrar{
   display: flex;
@@ -23,12 +17,12 @@
 
 .login-container {
   background-color: var(--blanco);
-  padding: 3rem;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
+  max-width: 400px;
 }
-
 h2 {
   text-align: center;
   margin-top: 0;
@@ -54,41 +48,9 @@ input[type="password"] {
   margin-top: 20px;
   color:var(--azul);
 }
-
-
-.login__nav {
-  display: flex;
-  column-gap: 2rem;
-  font-size: 1.2rem;
-}
-
-.login__nav a {
-  display: block;
-  padding: 1rem 0;
+.login-container a {
+  display: inline-block;
   color: var(--naranja);
   text-decoration: none;
   width: 100%;
-}
-
-.login__nav a:last-of-type {
-  text-align: right;
-}
-
-.btn__cont {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-}
-
-.btn-Original--ch {
-  margin: 2rem 0 0 0;
-  padding: .5rem .4rem;
-  background-color: transparent;
-  color: var(--naranja);
-  border-color: var(--naranja);
-}
-
-.btn-Original--ch:hover {
-  background-color: var(--naranja);
-  color: var(--blanco);
 }

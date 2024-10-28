@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private router:Router) { }
 
-
+  
   autenticarUsusrio = async (email:string,pass:string) => {
     try {
       const url = `/auth/login`; // api
@@ -29,4 +29,6 @@ export class AuthService {
       return; 
     }
   }
+
+
 }

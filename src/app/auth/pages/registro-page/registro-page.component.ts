@@ -49,7 +49,7 @@ export class RegistroPageComponent implements OnInit {
     this.msg.title = 'Cuenta creada correctamente';
     this.msg.msg = 'Hemos enviado un email de confirmación, presiona el enlace';
     setTimeout(() => {
-      this.router.navigate(['/auth/msg']);
+      this.router.navigate(['/auth/confirmar']);
     }, 1000);
 
   }

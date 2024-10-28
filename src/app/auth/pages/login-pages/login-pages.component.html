@@ -1,6 +1,6 @@
 <div class="login__contenedor">
   <!-- Login contendor -->
-  <div class="centrar">
+
     <div class="login-container">
       <h2>Iniciar Sesión</h2>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -11,12 +11,17 @@
         <label for="pass">Contraseña</label>
         <input type="password" id="pass" formControlName="pass" placeholder="Introduce tu contraseña">
         
-  
-        <input class="btn-Original" type="submit" [disabled]="loginForm.invalid" value="Login">
+        <div class="">
+          <input class="btn-Original" type="submit" [disabled]="loginForm.invalid" value="Login">
+        </div>
       </form>
-      <p>¿No tienes cuenta? <a routerLink="/auth/registro"><strong>Regístrate aquí</strong></a></p>
-      <a routerLink="/clientes/inicio"><strong>Volver</strong></a>
+      <nav class="login__nav">
+        <a routerLink="/auth/registro"><strong>¿No tienes cuenta? </strong></a>
+        <a routerLink="/auth/recuperar-cuenta"><strong>¿Olvidaste tu contraseña?</strong></a>
+      </nav>
+      <div class="btn__cont">
+        <a class="btn-Original--ch" routerLink="/clientes/inicio">Volver</a>
+      </div>
     </div>
-  </div>
   
 </div>
