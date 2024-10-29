@@ -14,7 +14,7 @@ export class AuthService {
   
   registroUs = async (usuario:Usuario) => {
     try {
-      const url = `/auth/login`; // api
+      const url = `/auth/registro`; // api
 
       const data = await clienteAxios.post(url,usuario);
       
