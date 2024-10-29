@@ -25,9 +25,9 @@
           </mat-form-field>
 
           <div class="btns">
+            <a routerLink="/auth/login" class="btn-Original-azul">Volver</a>
             <button class="btn-Original" matStepperNext
               [disabled]="personalFormGroup.invalid">Siguiente</button>
-            <a routerLink="/auth/login" class="btn-Original-azul">Volver</a>
           </div>
         </form>
       </mat-step>
@@ -55,7 +55,12 @@
 
           <mat-form-field appearance="fill" class="formulario-campo">
             <mat-label>Teléfono</mat-label>
-            <input matInput formControklName="phone">
+            <input matInput formControlName="phone">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="formulario-campo">
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="direccion">
           </mat-form-field>
 
           <div class="btns">

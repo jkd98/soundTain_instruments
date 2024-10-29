@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clienteAxios } from '../../helpers/axiosClient';
-import { Respuesta } from '../interfaces/respuestaProducto';
+import { Respuesta } from '../interfaces/respuesta';
 import { UnProducto } from '../interfaces/unProducto';
 import { Producto } from '../interfaces/producto';
 
