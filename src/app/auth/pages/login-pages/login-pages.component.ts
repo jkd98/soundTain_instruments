@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../../shared/interfaces/usuario';
+import { Respuesta } from '../../intefaces/respuesta';
 
 @Component({
   selector: 'app-login-pages',
@@ -30,10 +32,14 @@ export class LoginPagesComponent implements OnInit{
       const email = this.loginForm.get('email')!.value;
       const pass = this.loginForm.get('pass')!.value;
       // Aquí puedes enviar los datos del formulario, por ejemplo, a un servicio
-      this.authService.autenticarUsusrio(email,pass);
+      this.log(email,pass);
     } else {
       console.log('Formulario no válido');
     }
   }
+  async log(email:Usuario['email'],pass:Usuario['pass']){
+    const data:Respuesta = await this.authService.autenticarUsusrio(email,pass);
+    //if(data.msg==='ok')
 
+  }
 }
