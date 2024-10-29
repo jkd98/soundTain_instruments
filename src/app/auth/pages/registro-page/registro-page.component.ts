@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Producto } from '../../../shared/interfaces/producto';
+import { Usuario } from '../../../shared/interfaces/usuario';
+import { AuthService } from '../../services/auth.service';
+import { Respuesta } from '../../../shared/interfaces/respuesta';
 
 
 interface Msg {
@@ -21,7 +25,11 @@ export class RegistroPageComponent implements OnInit {
   additionalFormGroup!: FormGroup;
   public msg:Msg = {title:'',msg:''};
 
-  constructor(private _formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private router: Router,
+    private authService:AuthService
+  ) { }
 
   ngOnInit(): void {
     this.personalFormGroup = this._formBuilder.group({
@@ -35,22 +43,28 @@ export class RegistroPageComponent implements OnInit {
     });
 
     this.additionalFormGroup = this._formBuilder.group({
-      phone: [''],
+      phone: ['',Validators.required],
+      direccion:['',Validators.required]
     });
   }
 
   onSubmit(): void {
-    const formData = {
+    const formData:Usuario = {
       ...this.personalFormGroup.value,
       ...this.securityFormGroup.value,
       ...this.additionalFormGroup.getRawValue(), // getRawValue() para obtener campos deshabilitados
     };
     console.log('Datos del formulario:', formData);
-    this.msg.title = 'Cuenta creada correctamente';
-    this.msg.msg = 'Hemos enviado un email de confirmación, presiona el enlace';
+    this.register(formData);
+    this.register
     setTimeout(() => {
       this.router.navigate(['/auth/confirmar']);
     }, 1000);
 
+  }
+
+  async register(user:Usuario) {
+    const data = await this.authService.registroUs(user);
+    console.log(data);
   }
 }
