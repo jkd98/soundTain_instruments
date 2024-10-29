@@ -1,28 +1,18 @@
-<app-nav-bar></app-nav-bar>
-<header>
-    <h1>Adminstracion Productos</h1>
-</header>
-<body>
-    <div class="cajabuscar">
-        <fieldset>
-            <input type="text" id="s" value="" placeholder="Buscar"/>
-            <button id="btnBuscar"><img id="ico" src="assets/lupa.png" alt=""></button>
-        </fieldset>
+<div *ngIf="product" class="product-card">
+    <h2>{{ product.name }}</h2>
+    <p><strong>Descripción:</strong> {{ product.description }}</p>
+    <p><strong>Tipo:</strong> {{ product.type }}</p>
+    <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
+    <p><strong>Proveedor:</strong> {{ product.supplier }}</p>
+    <p><strong>Costo:</strong> {{ product.cost | currency }}</p>
+    <p><strong>Precio Público:</strong> {{ product.publicPrice | currency }}</p>
+    <p><strong>Espacio Asignado:</strong> {{ product.assignedSpace }}</p>
+    
+    <div *ngIf="product.images?.length">
+      <h3>Imágenes:</h3>
+      <div *ngFor="let image of product.images">
+        <img [src]="image" alt="Imagen de {{ product.name }}" class="product-image">
+      </div>
     </div>
-    <br>
-    <section class="tblProducto">
-        <table>
-            <tr>
-                <td>Imagen</td>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-                <td>Cantidad</td>
-            </tr>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
-    </section>
-
- </body>
+  </div>
 
