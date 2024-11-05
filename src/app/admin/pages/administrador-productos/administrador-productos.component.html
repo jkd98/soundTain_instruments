@@ -1,3 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <app-busqueda></app-busqueda>
-<app-listado></app-listado>
+@if (modificando == true) {
+    <app-producto-admin></app-producto-admin>
+}
+@if (modificando == false){
+    <app-listado></app-listado>
+}
+

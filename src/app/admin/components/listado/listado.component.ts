@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminProductos } from '../../admin-productos';
+import { ProductoService } from '../../../shared/services/producto.service';
+import { Producto } from '../../../shared/interfaces/producto';
 
 @Component({
   selector: 'app-listado',
@@ -7,41 +9,36 @@ import { AdminProductos } from '../../admin-productos';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
-   products: AdminProductos[] = [
-    {
-      id: 1,
-      name: 'Producto 1',
-      description: 'Descripción del Producto 1',
-      type: 'Tipo A',
-      quantity: 10,
-      supplier: 'Proveedor A',
-      cost: 100,
-      publicPrice: 120,
-      assignedSpace: 'A1',
-      images: 'https://example.com/image1.jpg'
-    },
-    {
-      id: 2,
-      name: 'Producto 2',
-      description: 'Descripción del Producto 2',
-      type: 'Tipo B',
-      quantity: 20,
-      supplier: 'Proveedor B',
-      cost: 150,
-      publicPrice: 180,
-      assignedSpace: 'B2',
-      images: 'https://example.com/image2.jpg'
-    }
-  ];
+  constructor(private productosService: ProductoService) {}
+
+  producto : Producto [] = [{
+    _id:"1",
+    nombre: "Bateria",
+    descripcion: "Suena chido",
+    precio: 1234,
+    cantidad: 24,
+    categoria: "viento",
+    estante: "Estante 4",
+    seccionEstante: "Seccion 6",
+    imagen: "bateria.jpg"
+  }]
+   
   
 
-  editProduct(product: AdminProductos) {
+  editProduct(product: Producto) {
     // Lógica para modificar el producto
+    this.productosService.setModificando(true);
+    this.productosService.setProducto(product)
     console.log('Modificar producto:', product);
   }
 
-  deleteProduct(productId: number) {
-    this.products = this.products.filter(product => product.id !== productId);
+  crearProducto(){
+    // Lógica para crear el producto
+    this.productosService.setModificando(true);
+  }
+
+  deleteProduct(productId: string) {
+    this.producto = this.producto.filter(producto => producto._id !== productId);
     console.log('Producto eliminado con ID:', productId);
   }
 }
