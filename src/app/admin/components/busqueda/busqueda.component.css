@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30vh; /* Ocupa toda la altura de la ventana */
+    height: 17vh; 
   }
   
   form {
@@ -12,10 +12,15 @@
   input {
     padding: 0.1rem;
     font-size: 1.6rem;
-    margin-right: 0.1rem;
+    width: 40rem;
   }
   
   button {
-    padding: 0.1rem;
-    font-size: 1.6rem;
+    font-size: medium;
+    background-color: rgb(0, 137, 216);
+    border: none;
+    border-radius: 0.4rem;
+    width: 9rem;
+    height: 4rem;
+    margin-left: 3rem;
   }

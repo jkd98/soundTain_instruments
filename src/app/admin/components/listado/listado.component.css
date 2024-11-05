@@ -1,3 +1,22 @@
+.cont-boton{
+    padding: 1.6rem;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50rem;
+    text-align: center;
+}
+
+#btn-Agregar{
+    font-size: 2rem;
+    background-color: rgb(34, 187, 13);
+    border: none;
+    border-radius: 0.4rem;
+    width: 24rem;
+    height: 6rem;
+    margin-right: 3rem;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -12,4 +31,27 @@ table {
   th {
     background-color: #ff2626;
   }
+
+#col-acciones{
+  width: 27rem;
+}
+
+#btn-editar{
+  font-size: medium;
+  background-color: rgb(216, 194, 0);
+  border: none;
+  border-radius: 0.4rem;
+  width: 9rem;
+  height: 4rem;
+  margin-right: 3rem;
+}
   
+#btn-eliminar {
+  font-size: medium;
+  background-color: rgb(216, 0, 0);
+  border: none;
+  border-radius: 0.4rem;
+  width: 9rem;
+  height: 4rem;
+  color: white;
+}

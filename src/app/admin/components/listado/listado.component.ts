@@ -20,7 +20,7 @@ export class ListadoComponent {
     categoria: "viento",
     estante: "Estante 4",
     seccionEstante: "Seccion 6",
-    imagen: "xd"
+    imagen: "bateria.jpg"
   }]
    
   
@@ -30,6 +30,11 @@ export class ListadoComponent {
     this.productosService.setModificando(true);
     this.productosService.setProducto(product)
     console.log('Modificar producto:', product);
+  }
+
+  crearProducto(){
+    // Lógica para crear el producto
+    this.productosService.setModificando(true);
   }
 
   deleteProduct(productId: string) {

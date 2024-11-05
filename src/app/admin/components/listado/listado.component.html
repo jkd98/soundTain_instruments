@@ -1,3 +1,7 @@
+<div class="cont-boton">
+  <button id="btn-Agregar" (click)="crearProducto()"><strong>Agregar Producto!</strong></button>
+</div>
+
 <table>
     <thead>
       <tr>
@@ -14,9 +18,9 @@
         <td>{{ productos.categoria }}</td>
         <td>{{ productos.precio| currency }}</td>
         <td>{{ productos.cantidad }}</td>
-        <td>
-          <button (click)="editProduct(productos)">Modificar</button>
-          <button (click)="deleteProduct(productos._id)">Eliminar</button>
+        <td id="col-acciones">
+          <button id="btn-editar" (click)="editProduct(productos)">Modificar</button>
+          <button id="btn-eliminar" (click)="deleteProduct(productos._id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
