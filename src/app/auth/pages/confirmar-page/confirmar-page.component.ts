@@ -40,8 +40,11 @@ export class ConfirmarPageComponent implements OnInit{
 
   }
 
-  async confirmar(tkn:Usuario['token']) {
-    const data = await this.authService.confirmar(tkn);
+  confirmar(tkn:Usuario['token']) {
+    this.authService.confirmar(tkn)
+      .subscribe(resp => {
+        console.log(resp);
+      });
   }
   
 }

@@ -1,4 +1,6 @@
-import { Component,HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Route, Router, RouteReuseStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,11 +8,16 @@ import { Component,HostListener } from '@angular/core';
   styleUrl: './nav-bar.component.css'
 })
 
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
 
-  public showMenu:boolean = false;
+  public showMenu: boolean = false;
+  public log: boolean = false;
 
-  onShowMenu():void {
+  constructor(private authServ:AuthService, private route:Router){}
+  ngOnInit(): void {
+    this.log = window.localStorage.getItem('rol') ? true : false;
+  }
+  onShowMenu(): void {
     this.showMenu = !this.showMenu;
   }
 
@@ -26,6 +33,12 @@ export class NavBarComponent {
       this.showMenu = false;
     }
   }
-  
+
+  logOut():void {
+    this.authServ.logOut();
+    this.log = false;
+    //this.route.navigate(['/']);
+  }
+
 }
 

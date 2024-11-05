@@ -17,8 +17,12 @@
     <div class="nav__links" [ngClass]="{'nav__links--show':showMenu}">
         <a class="nav__enlace" routerLink="/clientes/inicio" routerLinkActive="active-link" >Inicio</a>
         <a class="nav__enlace" routerLink="/clientes/instrumentos" routerLinkActive="active-link" >Instrumentos</a>
-        <a class="nav__enlace" routerLink="/clientes/nosotros" routerLinkActive="active-link" >Nosotros</a>
-        <a class="nav__enlace" routerLink="/auth" >Iniciar Sesión</a>
+        <a class="nav__enlace" routerLink="/nosotros" routerLinkActive="active-link" >Nosotros</a>
+        @if (log) {
+            <a class="nav__enlace" (click)="logOut()" >Cerrar Sesion</a>
+        }@else {
+            <a class="nav__enlace" routerLink="/auth" >Iniciar Sesión</a>
+        }
         <div class="hamburger--close">
             <button 
                 class="hamburger__btn"
@@ -30,7 +34,7 @@
     </div>
 
     <div class="nav__cart">
-        <a routerLink="/clientes/carrito">
+        <a routerLink="/carrito">
             <img src="assets/iconCarrito.svg" alt="icono carrito">
         </a>
     </div>

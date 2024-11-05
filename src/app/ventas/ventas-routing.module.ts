@@ -4,12 +4,12 @@ import { CarritoComponent } from "./components/carrito/carrito.component";
 
 const routes: Routes = [
     {
-        path: 'Cart',
+        path: 'cart',
         component: CarritoComponent
     },
     {
       path: '**',
-      redirectTo:'Cart'
+      redirectTo:'cart'
   },
 ];
 

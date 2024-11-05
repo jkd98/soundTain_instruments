@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Producto } from '../../../shared/interfaces/producto';
 import { Usuario } from '../../../shared/interfaces/usuario';
 import { AuthService } from '../../services/auth.service';
-import { Respuesta } from '../../../shared/interfaces/respuesta';
+import { RespuestaProducto } from '../../../shared/interfaces/respuestaProducto';
 
 
 interface Msg {
@@ -63,8 +63,10 @@ export class RegistroPageComponent implements OnInit {
 
   }
 
-  async register(user:Usuario) {
-    const data = await this.authService.registroUs(user);
-    console.log(data);
+  register(user:Usuario) {
+    this.authService.registroUs(user)
+      .subscribe(resp=>{
+        console.log(resp);
+      });
   }
 }

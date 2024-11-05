@@ -1,5 +1,6 @@
 <app-header></app-header>
 
+
 <section>
     <app-filters></app-filters>
 </section>
@@ -8,18 +9,22 @@
     <main class="bg-blanco">
         <div class="contenedor productos">
             <h2 class="productos__title">Productos nuevos</h2>
-            <app-listado-productos [productos]="productosNvs" ></app-listado-productos>
+            <app-slider-productos [productos]="productosNvs"></app-slider-productos>
         </div>
     </main>
+}
     
-    <app-hero-nosotros></app-hero-nosotros>
-    
-    <section class="bg-blanco">
-        <div class="contenedor productos">
-            <h2 class="productos__title">Más vendidos</h2>
-            <app-listado-productos [productos]="productosNvs" ></app-listado-productos>
-        </div>
-    </section>
-    
-    <app-footer></app-footer>
+<app-hero-nosotros></app-hero-nosotros>
+
+@defer(on viewport) {
+<section class="bg-blanco">
+    <div class="contenedor productos">
+        <h2 class="productos__title">Más vendidos</h2>
+        <app-slider-productos [productos]="productosNvs"></app-slider-productos>
+    </div>
+</section>
+
+<app-footer></app-footer>
+}@placeholder {
+<pre>load...</pre>
 }

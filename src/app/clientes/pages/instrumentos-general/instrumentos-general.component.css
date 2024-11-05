@@ -1,50 +1,98 @@
-* {
-    font-family: "Roboto", sans-serif;
-}
-
-.contenedor {
-    display: flex;
-    flex-direction: column;
-}
-
 .contenido {
-    display: flex;
+  display: grid;
+  grid-template-columns: .7fr 1fr 1fr;
+  column-gap: 1.5rem;
 }
 
-.izquierda-column .precio{
-    width: 200px; /* Ajusta el ancho de la barra de filtros */
-    padding: 10px;
-    border-radius: 5px;
+/* Left column (filters) */
+.izquierda-column {
+  grid-column: 1/2;
+  padding: 1.5rem;
+  background-color: var(--blanco);
+  border-radius: 8px;
+  width: 100%;
 }
 
+/* Estilos generales para el contenedor de filtros */
+/* .opciones-filtros {
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 20px auto;
+  }
+   */
 .opciones-filtros h4 {
-    margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
-.opciones-filtros a {
-    color: #f97316; /* Color del enlace */
-    text-decoration: none;
+/* Estilos para cada filtro */
+.opciones-filtros label {
+  display: block;
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 5px;
 }
 
-.opciones-filtros a:hover {
-    text-decoration: underline; /* Subrayar al pasar el mouse */
+.opciones-filtros select,
+.opciones-filtros input[type="number"],
+.opciones-filtros input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+  transition: border 0.3s;
 }
 
+.opciones-filtros select:focus,
+.opciones-filtros input[type="number"]:focus,
+.opciones-filtros input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Botón de aplicar filtros */
+.opciones-filtros button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.opciones-filtros button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* Right column (products) */
 .derecha-column {
-    flex-grow: 1; /* Ocupa el resto del espacio disponible */
-    padding: 10px;
+  grid-column: 2/4;
+  background-color: var(--blanco);
+  border-radius: .8rem;
+  padding: 2rem;
 }
 
 .derecha-column h2 {
-    display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-    font-size: 4rem; /* Tamaño de fuente */
-    color: white; /* Color del texto */
-    margin-bottom: 15px; /* Espacio debajo del encabezado */
-    
+  font-size: 1.5em;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
-
-
+.productos-modulo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1em;
+}

@@ -7,6 +7,7 @@ import { Error404PageComponent } from './pages/error404-page/error404-page.compo
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductoComponent } from './components/producto/producto.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SharedListadoProductosComponent } from './components/shared-listado-productos/shared-listado-productos.component';
 
 
 
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
     Error404PageComponent,
     ProductoComponent,
     FooterComponent,
+    SharedListadoProductosComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     Error404PageComponent,
     ProductoComponent,
     FooterComponent,
+    SharedListadoProductosComponent
   ]
 })
 export class SharedModule { }

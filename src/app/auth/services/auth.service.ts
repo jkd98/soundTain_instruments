@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-
-import { clienteAxios } from '../../helpers/axiosClient';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
+import { RespuestaProducto } from '../../shared/interfaces/respuestaProducto';
 import { Usuario } from '../../shared/interfaces/usuario';
-import { Respuesta } from '../intefaces/respuesta';
 
 
 @Injectable({
@@ -11,66 +11,56 @@ import { Respuesta } from '../intefaces/respuesta';
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  private baseURL:string = environment.API;
+  
+  getBaseURL(){
+    return this.baseURL;
+  }
+  constructor(private http: HttpClient) { 
 
+  }
 
-  registroUs = async (usuario: Usuario) => {
-    try {
+  
+  registroUs(usuario: Usuario):Observable<RespuestaProducto> {
       const url = `/auth/registro`; // api
-
-      const data = await clienteAxios.post(url, usuario);
-
-      //localStorage.setItem('token',data.token);
-      console.log(data);
-      //if(data.msg === 'ok') this.router.navigate(['/']);
-      return null;
-    } catch (error) {
-      // envira msgs de error
-      let err: any = error;
-      console.log(err);
-
-      return;
-    }
+      return this.http.post<RespuestaProducto>(`${this.getBaseURL()}${url}`,usuario);
   }
 
-  confirmar = async (tkn: Usuario['token']) => {
+  confirmar(tkn: Usuario['token']):Observable<RespuestaProducto> {
     //console.log(tkn);
-    //return;
-    try {
       const url = `/auth/confirmar/${tkn}`; // api
-
-      const data = await clienteAxios.get(url);
-
-      //localStorage.setItem('token',data.token);
-      console.log(data);
-      //if(data.msg === 'ok') this.router.navigate(['/']);
-      return null;
-    } catch (error) {
-      // envira msgs de error
-      let err: any = error;
-      console.log(err);
-
-      return;
-    }
+      return this.http.get<RespuestaProducto>(`${this.getBaseURL()}${url}`);
   }
 
-  autenticarUsusrio = async (email: string, pass: string) => {
-    try {
+  autenticarUsusrio(email: string, pass: string):Observable<RespuestaProducto>{
       const url = `/auth/login`; // api
-      const resp = await clienteAxios.post(url, { email, pass });
-      const data:Respuesta = resp.data;
-      //localStorage.setItem('token',data.token);
-      console.log(data);
-      //if(data.msg === 'ok') this.router.navigate(['/']);
-      return data;
-    } catch (error) {
-      // envira msgs de error
-      let err: any = error;
-      console.log(err);
-      let respErr:Respuesta = {status:'error',msg:'error al hacer la petición', data:null};
-      return respErr;
-    }
+      return this.http.post<RespuestaProducto>(`${this.getBaseURL()}${url}`,{email,pass});
   }
 
+  solicitarNvPass(email:Usuario['nombre']):Observable<RespuestaProducto>{
+    const url = '/auth/olvide-passwd';
+    return this.http.post<RespuestaProducto>(`${this.getBaseURL()}${url}`,{email});
+  }
+
+  validTknNVPasswd(tkn:Usuario['token']):Observable<RespuestaProducto>{
+    const url = `/auth/olvide-passwd/${tkn}`;
+    return this.http.get<RespuestaProducto>(`${this.getBaseURL()}${url}`);
+  }
+
+  nwPasswd(pass:Usuario['pass'],tkn:Usuario['token']):Observable<RespuestaProducto>{
+    const url = `/auth/olvide-passwd/${tkn}`;
+    return this.http.post<RespuestaProducto>(`${this.getBaseURL()}${url}`,{tkn,pass})
+  }
+
+  logOut():void {
+    window.localStorage.clear();
+    const url = `/auth/logout`;
+    this.http.get<RespuestaProducto>(`${this.getBaseURL()}${url}`).subscribe();
+  }
+
+  /* checkAuthentication():Observable<any> {
+      
+    
+  } */
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../../shared/interfaces/usuario';
 
 @Component({
   selector: 'app-olvide-pass',
@@ -18,17 +19,25 @@ export class OlvidePassComponent {
     });
   }
 
-  onSubmit() {
+  onSubmit():void {
     if (this.recuForm.valid) {
       console.log('Formulario válido:', this.recuForm.value);
       const email = this.recuForm.get('email')!.value;
       // Aquí puedes enviar los datos del formulario, por ejemplo, a un servicio
       console.log(email);
       //this.authService.(email);
-      this.router.navigate(['/auth/nueva-pass']);
+      this.solicitarNvPass(email);
+      //this.router.navigate(['/auth/nueva-pass']);
     } else {
       console.log('Formulario no válido');
     }
+  }
+
+  solicitarNvPass(email:Usuario['email']):void {
+    this.authService.solicitarNvPass(email)
+      .subscribe(resp => {
+        console.log(resp);
+      });
   }
 
 }

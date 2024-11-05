@@ -3,6 +3,9 @@
     <app-nav-bar></app-nav-bar>
 
     <!-- prod principal -->
+    <div class="btn__cont">
+        <a class="btn-Original--ch" routerLink="/clientes/inicio">Volver</a>
+    </div>
     <div class="container">
         <div class="image-section">
             <div class="product-images">
@@ -31,16 +34,16 @@
                     <input type="number" id="quantity" name="quantity" min="1" max="50" value="1"
                         class="quantity-input">
                 </div>
-                <div class="units-available">Disponibles: 50 unidades</div>
+                <div class="units-available">Disponibles: {{producto.cantidad}} unidades</div>
                 <a href="#" class="buy-button">Comprar ahora</a>
-                <a href="#" class="add-cart-button">Agregar al carrito</a>
+                <button class="btn-Original" (click)="aggCart()">Agregar al carrito</button>
             </div>
         </div>
     </div>
 
     <div class="related-products-section">
         <h2>Productos relacionados</h2>
-        <app-listado-productos></app-listado-productos>
+        <app-slider-productos></app-slider-productos>
     </div>
 
     <div class="comments-section">
@@ -48,15 +51,15 @@
         <div class="rating-section">
             <label class="rating-label">Califica este producto:</label>
             <div class="star-rating">
-                <span class="star" onclick="selectStar(1)">&#9733;</span>
-                <span class="star" onclick="selectStar(2)">&#9733;</span>
-                <span class="star" onclick="selectStar(3)">&#9733;</span>
-                <span class="star" onclick="selectStar(4)">&#9733;</span>
-                <span class="star" onclick="selectStar(5)">&#9733;</span>
+                <span class="star" [ngClass]="{'selected':calif>=1}" (click)="selectStar(1)">&#9733;</span>
+                <span class="star" [ngClass]="{'selected':calif>=2}" (click)="selectStar(2)">&#9733;</span>
+                <span class="star" [ngClass]="{'selected':calif>=3}" (click)="selectStar(3)">&#9733;</span>
+                <span class="star" [ngClass]="{'selected':calif>=4}" (click)="selectStar(4)">&#9733;</span>
+                <span class="star" [ngClass]="{'selected':calif>=5}" (click)="selectStar(5)">&#9733;</span>
             </div>
         </div>
-        <textarea class="comment-textarea" rows="4" placeholder="Escribe tu comentario..."></textarea>
-        <a href="#" class="submit-comment-button">Publicar comentario</a>
+        <textarea #commentInput class="comment-textarea" rows="4" placeholder="Escribe tu comentario..."></textarea>
+        <button class="btn-Original" (click)="onSubmitCmts()">Publicar comentario</button>
     </div>
 
     <app-footer></app-footer>

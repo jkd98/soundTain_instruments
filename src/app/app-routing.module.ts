@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,11 +14,14 @@ const routes: Routes = [
   },
   {
     path: 'carrito',
-    loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule )
+    loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule ),
+    canActivate:[authGuard],
+    data: {expectedRole:'Cliente'}
   },
   {
     path: 'administracion',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    
   },
   {
     path: 'nosotros',

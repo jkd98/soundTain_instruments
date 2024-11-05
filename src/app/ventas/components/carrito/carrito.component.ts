@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-carrito',
@@ -6,13 +7,49 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent implements OnInit {
+///
+public cart:any;
+public carTotal:any;
 
-  totalMonto: number = 250; // Puedes calcularlo dinámicamente
+totalMonto: number = 250; // Puedes calcularlo dinámicamente
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
 
-  ngOnInit(): void {
-    this.renderPayPalButton();
-  }
+///
+constructor(private cartSvs:CartService){
+  // asi se instancia la señal, se agregan parentesis al final para obtener el valor
+  this.cart = this.cartSvs.carReadonly; 
+  this.carTotal = this.cartSvs.cartTotalReadonly;
+}
+
+///
+ngOnInit(): void {
+this.cartSvs.initialCart();
+this.renderPayPalButton();
+}
+
+
+// Funcion para quitar elementos del array
+removeFromCart(id:any){
+  console.log(`Enviando item ${id}`);
+  this.cartSvs.removeFromCart(id);
+}
+
+// Funcion para incrementar en 1 la catidad de un item
+increaseQuantity(id:any){
+  this.cartSvs.increaseQuatity(id);
+}
+
+// Funcion para decrementar en 1 la catidad de un item
+decreaseQuantity(id:any){
+  this.cartSvs.decreaseQuantity(id);
+}
+
+// Funcion para limpiar el carrito
+clearCart(){
+  this.cartSvs.clearCart();
+}
+  
+
 
   renderPayPalButton() {
     (window as any).paypal.Buttons({
