@@ -9,14 +9,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.name }}</td>
-        <td>{{ product.type }}</td>
-        <td>{{ product.cost | currency }}</td>
-        <td>{{ product.quantity }}</td>
+      <tr *ngFor="let productos of producto">
+        <td>{{ productos.nombre }}</td>
+        <td>{{ productos.categoria }}</td>
+        <td>{{ productos.precio| currency }}</td>
+        <td>{{ productos.cantidad }}</td>
         <td>
-          <button (click)="editProduct(product)">Modificar</button>
-          <button (click)="deleteProduct(product.id)">Eliminar</button>
+          <button (click)="editProduct(productos)">Modificar</button>
+          <button (click)="deleteProduct(productos._id)">Eliminar</button>
         </td>
       </tr>
     </tbody>

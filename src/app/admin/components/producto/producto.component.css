@@ -1,0 +1,47 @@
+.product-card {
+    border: 0.1rem solid #ccc;
+    padding: 1.6rem;
+    border-radius: 0.8rem;
+    background-color: #181515;
+    box-shadow: 0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50rem;
+
+  }
+  
+  .product-card h2 {
+    margin-top: 0;
+  }
+  
+  .product-card img {
+    max-width: 10rem;
+    margin: 0.8rem;
+  }
+
+  .btn-Cerrar {
+    border-radius: 0.8rem;
+    position: absolute;
+    right: 45rem;
+    color: white;
+    background-color: rgb(238, 28, 28);
+    border: none;
+  }
+
+  .btn-Guardar {
+    margin-left: 5rem;
+    margin-right: 10rem;
+    font-size: medium;
+    background-color: green;
+    border: none;
+  }
+
+  .btn-Cancelar {
+    margin-left: 10rem;
+    margin-right: 5rem;
+    font-size: medium;
+    background-color: yellow;
+    border: none;
+  }
+  

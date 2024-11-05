@@ -1,18 +1,17 @@
-<div *ngIf="product" class="product-card">
-    <h2>{{ product.name }}</h2>
-    <p><strong>Descripción:</strong> {{ product.description }}</p>
-    <p><strong>Tipo:</strong> {{ product.type }}</p>
-    <p><strong>Cantidad:</strong> {{ product.quantity }}</p>
-    <p><strong>Proveedor:</strong> {{ product.supplier }}</p>
-    <p><strong>Costo:</strong> {{ product.cost | currency }}</p>
-    <p><strong>Precio Público:</strong> {{ product.publicPrice | currency }}</p>
-    <p><strong>Espacio Asignado:</strong> {{ product.assignedSpace }}</p>
-    
-    <div *ngIf="product.images?.length">
-      <h3>Imágenes:</h3>
-      <div *ngFor="let image of product.images">
-        <img [src]="image" alt="Imagen de {{ product.name }}" class="product-image">
-      </div>
-    </div>
+<div *ngIf="producto" class="product-card">
+  <button class="btn-Cerrar" (click)="cerrarVentana()"><u>Cerrar</u></button>
+  <h2>{{ producto.nombre }}</h2>
+  <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
+  <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
+  <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+  <p><strong>Cantidad:</strong> {{ producto.cantidad }}</p>
+  <p><strong>Estante:</strong> {{ producto.estante }}</p>
+  <p><strong>Sección:</strong> {{ producto.seccionEstante }}</p>
+  <h3>Imágenes</h3>
+  <img [src]="producto.imagen" alt="Imagen de {{ producto.nombre }}" class="product-image">
+  <div class="cont-acciones">
+    <button class="btn-Guardar">Guardar</button>
+    <button class="btn-Cancelar">Cancelar</button>
   </div>
+</div>
 
