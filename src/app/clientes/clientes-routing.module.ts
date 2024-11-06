@@ -6,6 +6,7 @@ import { InstrumentosGeneralComponent } from './pages/instrumentos-general/instr
 import { NosotrosPageComponent } from "../nosotros/nosotros-page/nosotros-page.component";
 import { CarritoComponent } from "../ventas/components/carrito/carrito.component";
 import { ProductoDetallesComponent } from "./pages/producto-detalles/producto-detalles.component";
+import { authGuard } from "../auth/guards/auth.guard";
 
 const routes: Routes = [
     {
@@ -15,8 +16,6 @@ const routes: Routes = [
             { path:'inicio', component:HomePageComponent },
             { path:'instrumentos', component:InstrumentosGeneralComponent },
             { path:'instrumento/:ins', component:ProductoDetallesComponent },
-            { path:'nosotros', component:NosotrosPageComponent },
-            { path:'carrito', component:CarritoComponent  },
             { path:'**', redirectTo:'inicio'  }
         ]
     }

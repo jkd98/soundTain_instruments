@@ -1,22 +1,23 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../../shared/interfaces/usuario';
 
 @Component({
   selector: 'app-login-pages',
   templateUrl: './login-pages.component.html',
   styleUrl: './login-pages.component.css'
 })
-export class LoginPagesComponent implements OnInit{
+export class LoginPagesComponent implements OnInit {
 
   public loginForm!: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private router:Router, private authService:AuthService) {
-    
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+
   }
-  
+
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,10 +31,31 @@ export class LoginPagesComponent implements OnInit{
       const email = this.loginForm.get('email')!.value;
       const pass = this.loginForm.get('pass')!.value;
       // Aquí puedes enviar los datos del formulario, por ejemplo, a un servicio
-      this.authService.autenticarUsusrio(email,pass);
+      this.log(email, pass);
     } else {
       console.log('Formulario no válido');
     }
   }
 
+  log(email: Usuario['email'], pass: Usuario['pass']) {
+    this.authService.autenticarUsusrio(email, pass).
+      subscribe(resp => {
+        console.log(resp);
+        window.sessionStorage.setItem('rol', resp.data.rol);
+        window.sessionStorage.setItem('tkn', resp.data.tkn);
+        // Verifica si hay una URL de redirección almacenada
+        const redirectUrl = localStorage.getItem('redirectUrl');
+
+        if (redirectUrl) {
+          this.router.navigateByUrl(redirectUrl); // Redirige a la URL original
+          localStorage.removeItem('redirectUrl'); // Limpia el valor de `redirectUrl`
+        } else {
+          this.router.navigate(['/']); // O redirige a la página principal u otra por defecto
+        }
+
+      });
+
+
+
+  }
 }

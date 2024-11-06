@@ -1,7 +1,7 @@
 
-@if (getValid()) {
+@if (!getValid() && id) {
     <ng-container>
-        @if (getValid() && false) {
+        @if (getValid() && id ) {
         <app-alerta [title]="titulo" [msg]="msg" [enlace]="enlace" [routerLink]="url"></app-alerta>
         }@else {
         <div class="login__contenedor">

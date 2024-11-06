@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../../shared/interfaces/usuario';
 
 @Component({
   selector: 'app-confirmar-page',
@@ -11,7 +13,10 @@ export class ConfirmarPageComponent implements OnInit{
   public msg:string = 'Tu cuenta esta casi lista. Hemos enviado un correo de con los pasos siguientes.';
   public enlace:string = 'Inicio';
   public url:string = '/clientes/inicio';
-  constructor(private activatedRoute:ActivatedRoute){}
+  constructor(
+    private activatedRoute:ActivatedRoute,
+    private authService:AuthService
+  ){}
 
   ngOnInit(): void {
     let id:string|null = null;
@@ -29,9 +34,17 @@ export class ConfirmarPageComponent implements OnInit{
       this.msg = 'La cuenta se confirmo correctamente, ¡ya puedes iniciar sesión!';
       this.enlace = 'Iniciar Sesión';
       this.url = '/auth/login';
+      this.confirmar(id);
     }
 
 
+  }
+
+  confirmar(tkn:Usuario['token']) {
+    this.authService.confirmar(tkn)
+      .subscribe(resp => {
+        console.log(resp);
+      });
   }
   
 }

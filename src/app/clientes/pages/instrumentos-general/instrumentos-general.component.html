@@ -1,35 +1,49 @@
 <div class="contenedor">
-    <app-nav-bar></app-nav-bar>
+  <app-nav-bar></app-nav-bar>
 </div>
 
-<div class="contenido">
-    <!-- Contenedor izquierda: filtros -->
-    <div class="izquierda-column">
+<div class="contenido contenedor">
+  <!-- Contenedor izquierda: filtros -->
+  <div class="izquierda-column">
+    <div class="opciones-filtros">
+      <form [formGroup]="filtroForm" (ngSubmit)="aplicarFiltros()">
         <div class="opciones-filtros">
-            <h4>Filtros:</h4>
-            <a href="#">Guitarras</a><br>
-            <a href="#">Baterías</a><br>
-            <a href="#">Viento</a><br>
+          <h4>Filtros:</h4>
+          <label>
+            Categoría:
+            <select formControlName="categoria">
+              <option value="">Selecciona una categoría</option>
+              <option value="guitarras">Guitarras</option>
+              <option value="baterias">Baterías</option>
+              <option value="viento">Viento</option>
+            </select>
+          </label>
 
-            <!-- Filtro de precio -->
-            <h4>Filtrar por Precio:</h4>
-            <mat-form-field class="precio">
-                <mat-label>Precio Mínimo</mat-label>
-                <input matInput type="number">
-            </mat-form-field>
-            <mat-form-field class="precio">
-                <mat-label>Precio Máximo</mat-label>
-                <input matInput type="number">
-            </mat-form-field>
+          <h4>Filtrar por Precio:</h4>
+          <label>
+            Precio Mínimo:
+            <input formControlName="precioMin" type="number" placeholder="Precio mínimo">
+          </label>
+          <label>
+            Precio Máximo:
+            <input formControlName="precioMax" type="number" placeholder="Precio máximo">
+          </label>
+
+          <h4>Nombre:</h4>
+          <label>
+            <input formControlName="nombre" type="text" placeholder="Buscar por nombre">
+          </label>
+
+          <button type="submit">Aplicar Filtros</button>
         </div>
+      </form>
     </div>
-    <!-- Contenedor derecha: tarjetas -->
-    <div class="derecha-column">
-        <h2>Productos</h2>
-        <div class="productos-modulo">
-            <app-listado-productos></app-listado-productos>
-        </div>
-    </div>
+  </div>
+  <!-- Contenedor derecha: tarjetas -->
+  <div class="derecha-column">
+    <h2>Productos</h2>
+    <app-shared-listado-productos [productos]="productos"></app-shared-listado-productos>
+  </div>
 </div>
 
 <app-footer></app-footer>
