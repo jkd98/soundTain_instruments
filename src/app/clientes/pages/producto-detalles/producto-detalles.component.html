@@ -37,6 +37,9 @@
                 <div class="units-available">Disponibles: {{producto.cantidad}} unidades</div>
                 <a href="#" class="buy-button">Comprar ahora</a>
                 <button class="btn-Original" (click)="aggCart()">Agregar al carrito</button>
+                <div class="card">
+                    <p-messages [(value)]="messages" [enableService]="false" [closable]="false" />
+                </div>
             </div>
         </div>
     </div>

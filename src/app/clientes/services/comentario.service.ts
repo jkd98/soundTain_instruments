@@ -17,12 +17,18 @@ export class ComentarioService {
 
   aggComentario(comentario:Comentario):Observable<RespuestaProducto>{
     const url = `/coment/add/${comentario.producto}`; // api
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('tkn');
+    
+    //console.log(token);
+    
     let headers = new HttpHeaders();
 
     if (token) {
-      headers = headers.set('Authorization', `Bearer ${token}`);
+      headers = headers.append('Authorization', `Bearer ${token}`);
     }
+
+    //console.log(headers);
+
     return this.http.post<RespuestaProducto>(`${this.baseURL}${url}`,comentario,{ headers });
   }
 

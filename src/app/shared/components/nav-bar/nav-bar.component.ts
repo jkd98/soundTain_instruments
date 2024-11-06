@@ -12,11 +12,19 @@ export class NavBarComponent implements OnInit {
 
   public showMenu: boolean = false;
   public log: boolean = false;
+  private rol:string = '';
+
+  getRol(){
+    return this.rol;
+  }
 
   constructor(private authServ:AuthService, private route:Router){}
+  
   ngOnInit(): void {
-    this.log = window.localStorage.getItem('rol') ? true : false;
+    this.log = window.sessionStorage.getItem('tkn') ? true : false;
+    this.rol = window.sessionStorage.getItem('rol') ? window.sessionStorage.getItem('rol')! : '';
   }
+  
   onShowMenu(): void {
     this.showMenu = !this.showMenu;
   }
@@ -37,7 +45,7 @@ export class NavBarComponent implements OnInit {
   logOut():void {
     this.authServ.logOut();
     this.log = false;
-    //this.route.navigate(['/']);
+    this.route.navigate(['/clientes']);
   }
 
 }

@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ProductoComponent } from './components/producto/producto.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedListadoProductosComponent } from './components/shared-listado-productos/shared-listado-productos.component';
-
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -25,6 +25,7 @@ import { SharedListadoProductosComponent } from './components/shared-listado-pro
     CommonModule,
     RouterLink,
     RouterLinkActive,
+    MessagesModule
   ],
   exports: [
     NavBarComponent,
@@ -32,7 +33,8 @@ import { SharedListadoProductosComponent } from './components/shared-listado-pro
     Error404PageComponent,
     ProductoComponent,
     FooterComponent,
-    SharedListadoProductosComponent
+    SharedListadoProductosComponent,
+    MessagesModule
   ]
 })
 export class SharedModule { }

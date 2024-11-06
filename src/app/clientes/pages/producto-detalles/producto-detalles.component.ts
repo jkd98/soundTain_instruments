@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { ComentarioService } from '../../services/comentario.service';
 import { Comentario } from '../../../auth/intefaces/comentario';
 import { CartService } from '../../../ventas/services/cart.service';
+import { Message } from 'primeng/api';
 
 
 @Component({
@@ -12,22 +13,23 @@ import { CartService } from '../../../ventas/services/cart.service';
   templateUrl: './producto-detalles.component.html',
   styleUrl: './producto-detalles.component.css'
 })
-export class ProductoDetallesComponent implements OnInit{
-  
-  public producto:Producto = {_id:'',nombre:'',descripcion:'',precio:0};
+export class ProductoDetallesComponent implements OnInit {
+
+  public producto: Producto = { _id: '', nombre: '', descripcion: '', precio: 0 };
   public calif = 0;
-  public productoIMG:Producto['imagen'] = '';
-  private id:Producto['_id']='';
+  public productoIMG: Producto['imagen'] = '';
+  private id: Producto['_id'] = '';
   @ViewChild('commentInput') commentInputRef!: ElementRef; // Referencia al textarea
-  
+  public messages: Message[] = [];
+
   constructor(
-    private productoService:ProductoService,
+    private productoService: ProductoService,
     private activatedRouter: ActivatedRoute,
-    private comentarioService:ComentarioService,
-    private cartService:CartService,
+    private comentarioService: ComentarioService,
+    private cartService: CartService,
     private route: Router
-  ){}
-  
+  ) { }
+
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.id = '';
@@ -35,13 +37,13 @@ export class ProductoDetallesComponent implements OnInit{
       .subscribe(params => {
         this.id = params['ins'];
       }
-    );
+      );
     //console.log(id);
     this.obtenerProducto(this.id);
 
   }
 
-  obtenerProducto(id:Producto['_id']) {
+  obtenerProducto(id: Producto['_id']) {
     this.productoService.getDetalleProducto(id)
       .subscribe(resp => {
         console.log(resp);
@@ -50,27 +52,37 @@ export class ProductoDetallesComponent implements OnInit{
       });
   }
 
-  selectStar(num:number){
+  selectStar(num: number) {
     console.log(num);
     this.calif = num;
   }
 
-  onSubmitCmts():void {
-    const commentText:Comentario['comentario'] = this.commentInputRef.nativeElement.value;
-    console.log(commentText);
-    let comentario:Comentario = {producto:this.id,calificacion:this.calif,comentario:commentText};
-    this.comentarioService.aggComentario(comentario)
-      .subscribe(resp => {
-        console.log(resp);
-      });
+  onSubmitCmts(): void {
+    if (window.sessionStorage.getItem('rol')) {
+      const commentText: Comentario['comentario'] = this.commentInputRef.nativeElement.value;
+      let comentario: Comentario = { producto: this.id, calificacion: this.calif, comentario: commentText };
+      this.comentarioService.aggComentario(comentario)
+        .subscribe(resp => {
+          console.log(resp);
+        });
+    } else {
+      let url: string = `/clientes/instrumento/${this.id}`;
+      window.localStorage.setItem('redirectUrl', url);
+      this.route.navigate(['/auth/login']);
+
+    }
+
   }
 
-  aggCart():void {
-    if(window.localStorage.getItem('rol')) {
+  aggCart(): void {
+    if (window.sessionStorage.getItem('rol')) {
       this.cartService.addItems(this.producto);
+      this.messages = [
+        { severity: 'success', detail:'Producto agregado al carrito' },
+      ];
     } else {
-      let url:string = `/clientes/instrumento/${this.id}`;      
-      window.localStorage.setItem('redirectUrl',url);
+      let url: string = `/clientes/instrumento/${this.id}`;
+      window.localStorage.setItem('redirectUrl', url);
       this.route.navigate(['/auth/login']);
 
     }
