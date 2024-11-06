@@ -53,9 +53,9 @@ export class AuthService {
   }
 
   logOut():void {
-    window.localStorage.clear();
+    window.sessionStorage.clear();
     const url = `/auth/logout`;
-    this.http.get<RespuestaProducto>(`${this.getBaseURL()}${url}`).subscribe();
+    //this.http.get<RespuestaProducto>(`${this.getBaseURL()}${url}`).subscribe();
   }
 
   /* checkAuthentication():Observable<any> {

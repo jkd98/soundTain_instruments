@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Comentario } from '../../auth/intefaces/comentario';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { RespuestaProducto } from "../../shared/interfaces/respuestaProducto";
@@ -14,10 +14,16 @@ export class ComentarioService {
 
   constructor(private http:HttpClient) { }
 
+
   aggComentario(comentario:Comentario):Observable<RespuestaProducto>{
     const url = `/coment/add/${comentario.producto}`; // api
-    
-    return this.http.post<RespuestaProducto>(`${this.baseURL}${url}`,comentario);
+    const token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.post<RespuestaProducto>(`${this.baseURL}${url}`,comentario,{ headers });
   }
 
 }

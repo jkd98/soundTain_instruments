@@ -3,7 +3,7 @@ import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot } fr
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const router = inject(Router);
-  const userRole = window.localStorage.getItem('rol'); // Obtiene el rol del usuario almacenado
+  const userRole = window.sessionStorage.getItem('rol'); // Obtiene el rol del usuario almacenado
   const expectedRole = route.data['expectedRole']; // Obtiene el rol esperado de la configuración de la ruta
 
   if (userRole && userRole === expectedRole) {

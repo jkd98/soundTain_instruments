@@ -41,7 +41,8 @@ export class LoginPagesComponent implements OnInit {
     this.authService.autenticarUsusrio(email, pass).
       subscribe(resp => {
         console.log(resp);
-        window.localStorage.setItem('rol', resp.data);
+        window.sessionStorage.setItem('rol', resp.data.rol);
+        window.sessionStorage.setItem('tkn', resp.data.tkn);
         // Verifica si hay una URL de redirección almacenada
         const redirectUrl = localStorage.getItem('redirectUrl');
 
