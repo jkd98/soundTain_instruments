@@ -20,7 +20,7 @@
         <td>{{ productos.cantidad }}</td>
         <td id="col-acciones">
           <button id="btn-editar" (click)="editProduct(productos)">Modificar</button>
-          <button id="btn-eliminar" (click)="deleteProduct(productos._id)">Eliminar</button>
+          <button id="btn-eliminar" (click)="deleteProduct(productos._id!)">Eliminar</button>
         </td>
       </tr>
     </tbody>
