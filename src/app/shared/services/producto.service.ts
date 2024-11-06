@@ -12,6 +12,33 @@ export class ProductoService {
   
   private baseURL:string = environment.API;
 
+  //||||||||||||||||||||||||||||||||||||||||
+  //||||||Administracion Productos||||||||||
+  //||||||||||||||||||||||||||||||||||||||||
+
+  //Estado de modificacion de Productos
+  private modificandoSource = new BehaviorSubject<boolean>(false);
+  modificando$ = this.modificandoSource.asObservable();
+  setModificando(valor: boolean) {
+    this.modificandoSource.next(valor);
+  }
+
+  // Datos del pruducto
+  private datos = new BehaviorSubject<Producto>({
+    _id: '',
+    nombre: '',
+    descripcion: '',
+    precio: 0
+  });
+
+  // Observable que otros componentes pueden suscribirse para obtener el producto
+  producto$ = this.datos.asObservable();
+
+  // Método para actualizar el producto en el servicio
+  setProducto(producto: Producto) {
+    this.datos.next(producto);
+  }
+
   constructor(private http: HttpClient) { 
 
   }
