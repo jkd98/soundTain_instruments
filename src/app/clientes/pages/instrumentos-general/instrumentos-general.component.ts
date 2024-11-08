@@ -20,6 +20,7 @@ export class InstrumentosGeneralComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     // Inicializa el formulario reactivo
     this.filtroForm = this.fb.group({
       categoria: [''],

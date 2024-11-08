@@ -11,7 +11,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   }
 
   // Guarda la URL actual antes de redirigir al login
-  localStorage.setItem('redirectUrl', state.url);
+  sessionStorage.setItem('redirectUrl', state.url);
   
   // Redirige al login si no está autenticado o no tiene el rol necesario
   router.navigate(['/auth/login']);

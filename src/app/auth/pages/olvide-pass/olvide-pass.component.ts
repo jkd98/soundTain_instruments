@@ -24,10 +24,9 @@ export class OlvidePassComponent {
       console.log('Formulario válido:', this.recuForm.value);
       const email = this.recuForm.get('email')!.value;
       // Aquí puedes enviar los datos del formulario, por ejemplo, a un servicio
-      console.log(email);
+      //console.log(email);
       //this.authService.(email);
       this.solicitarNvPass(email);
-      //this.router.navigate(['/auth/nueva-pass']);
     } else {
       console.log('Formulario no válido');
     }
@@ -37,6 +36,9 @@ export class OlvidePassComponent {
     this.authService.solicitarNvPass(email)
       .subscribe(resp => {
         console.log(resp);
+        if(resp.status==='succes'){
+          this.router.navigate(['/auth/nueva-pass']);
+        }
       });
   }
 

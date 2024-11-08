@@ -1,5 +1,7 @@
+
+
 .formulario-contenedor {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,9 +14,13 @@
   overflow: hidden;
 }
 
+
+
 .mat-mdc-card {
   background-color: var(--blanco);
+  padding: 1rem;
 }
+
 
 .mat-stepper-vertical,
 .mat-stepper-horizontal {
@@ -29,8 +35,14 @@ mat-form-field {
   margin-bottom: 16px;
 }
 
+.f-size {
+  font-size: 2rem;
+}
 
-.c-azl {
+.registro__title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
   color: var(--azul);
 }
 
@@ -38,10 +50,11 @@ mat-form-field {
   background-color: var(--naranja);
 }
 
-a,[input="submit"]{
+a,
+[input="submit"] {
   font-size: 1.6rem;
 }
 
 .btns {
-    gap: 3rem;
+  gap: 3rem;
 }

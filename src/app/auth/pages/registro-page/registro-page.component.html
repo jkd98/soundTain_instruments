@@ -2,7 +2,7 @@
 <div class="formulario-contenedor">
   <mat-card class="formulario-card">
     <div class="contenedor">
-      <h1 class="c-azl">Crear cuenta</h1>
+      <h1 class="registro__title">Crear cuenta</h1>
     </div>
     <mat-horizontal-stepper [linear]="true" #stepper>
       <mat-step [stepControl]="personalFormGroup" >
@@ -11,7 +11,7 @@
           
           <mat-form-field appearance="fill" class="formulario-campo">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre" required>
+            <input matInput formControlName="nombre" class="f-size" required>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="formulario-campo">

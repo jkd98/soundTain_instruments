@@ -11,3 +11,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-top: 1rem;
 }
+
+.mapa{
+    background-color: var(--blanco);
+    padding: 5rem;
+}
+
+.mapa__title {
+    color: var(--azul);
+    margin-bottom: 2rem;
+}

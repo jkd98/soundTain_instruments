@@ -47,13 +47,13 @@ export class LoginPagesComponent implements OnInit {
           window.sessionStorage.setItem('rol', resp.data.rol);
           window.sessionStorage.setItem('tkn', resp.data.tkn);
           // Verifica si hay una URL de redirección almacenada
-          const redirectUrl = localStorage.getItem('redirectUrl');
-
+          const redirectUrl = sessionStorage.getItem('redirectUrl');
+          console.log(redirectUrl); 
           if (redirectUrl) {
             this.router.navigateByUrl(redirectUrl); // Redirige a la URL original
-            localStorage.removeItem('redirectUrl'); // Limpia el valor de `redirectUrl`
+            sessionStorage.removeItem('redirectUrl'); // Limpia el valor de `redirectUrl`
           } else {
-            this.router.navigate(['/']); // O redirige a la página principal u otra por defecto
+            this.router.navigate(['/clientes/inicio']); // O redirige a la página principal u otra por defecto
           }
         } else {
           this.messages = [

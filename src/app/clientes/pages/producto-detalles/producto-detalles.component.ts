@@ -67,7 +67,7 @@ export class ProductoDetallesComponent implements OnInit {
         });
     } else {
       let url: string = `/clientes/instrumento/${this.id}`;
-      window.localStorage.setItem('redirectUrl', url);
+      window.sessionStorage.setItem('redirectUrl', url);
       this.route.navigate(['/auth/login']);
 
     }
@@ -82,7 +82,7 @@ export class ProductoDetallesComponent implements OnInit {
       ];
     } else {
       let url: string = `/clientes/instrumento/${this.id}`;
-      window.localStorage.setItem('redirectUrl', url);
+      window.sessionStorage.setItem('redirectUrl', url);
       this.route.navigate(['/auth/login']);
 
     }

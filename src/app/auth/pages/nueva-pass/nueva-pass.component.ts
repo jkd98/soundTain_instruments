@@ -37,8 +37,10 @@ export class NuevaPassComponent {
       );
 
     console.log(this.id);
+    if(this.id) {
+      this.validarTknPwd(this.id);
+    }
     
-    this.validarTknPwd(this.id);
     
     
 
