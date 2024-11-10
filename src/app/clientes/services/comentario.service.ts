@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { RespuestaProducto } from "../../shared/interfaces/respuestaProducto";
+import { Producto } from '../../shared/interfaces/producto';
 
 
 @Injectable({
@@ -32,4 +33,9 @@ export class ComentarioService {
     return this.http.post<RespuestaProducto>(`${this.baseURL}${url}`,comentario,{ headers });
   }
 
+  comentariosPRoducts(prod:Producto['_id']):Observable<RespuestaProducto>{
+    const url = `/coment/producto/${prod}`;
+    return this.http.get<RespuestaProducto>(`${this.baseURL}${url}`)
+
+  }
 }

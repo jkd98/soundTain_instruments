@@ -50,12 +50,7 @@
             flex: 2;
         }
 
-        .product-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--naranja);
-
-        }
+        
 
         .product-price {
             font-size: 28px;
@@ -139,12 +134,7 @@
             border-radius: 1rem;
         }
 
-        .comments-section h2,
-        .related-products-section h2 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
+       
         .related-products {
             display: flex;
             flex-wrap: wrap;
@@ -183,6 +173,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: var(--azul);
         }
 
         .star-rating {

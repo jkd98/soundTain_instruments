@@ -1,9 +1,11 @@
-<app-nav-bar></app-nav-bar>
-<app-busqueda></app-busqueda>
-@if (modificando == true) {
-    <app-producto-admin></app-producto-admin>
-}
-@if (modificando == false){
-    <app-listado></app-listado>
-}
+<nav class="adm-h__contenedor">
+    <app-nav-bar></app-nav-bar>
+</nav>
 
+<div class="adm-m" >
+    <main class="adm-m__contenedor" >
+        <app-busqueda ></app-busqueda>
+    </main>
+</div>
+
+<app-footer></app-footer>

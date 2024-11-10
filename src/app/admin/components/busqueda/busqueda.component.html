@@ -1,6 +1,8 @@
 <div class="busqueda-container">
     <form [formGroup]="busquedaForm" (ngSubmit)="onSubmit()">
-      <input type="search" formControlName="busqueda" placeholder="Buscar...">
+      <input type="search" formControlName="nombre" placeholder="Buscar...">
       <button type="submit">Buscar</button>
     </form>
-  </div>
+</div>
+
+<app-listado [prods]="productos"></app-listado>

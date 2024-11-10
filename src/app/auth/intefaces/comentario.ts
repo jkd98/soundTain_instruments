@@ -3,6 +3,7 @@ import { Usuario } from "../../shared/interfaces/usuario"
 
 export interface Comentario {
     calificacion: number
-        comentario: string
-        producto:Producto['_id'],
+    comentario: string
+    producto: Producto['_id'],
+    usuario?:{id:Usuario['_id'],nombre:Usuario['nombre']}
 }

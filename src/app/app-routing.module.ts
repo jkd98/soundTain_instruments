@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule ),
     canActivate:[authGuard],
-    data: {expectedRole:'Cliente'}
+    data: {expectedRole:['Cliente','Admin']}
   },
   {
     path: 'administracion',

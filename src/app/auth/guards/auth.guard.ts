@@ -6,7 +6,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
   const userRole = window.sessionStorage.getItem('rol'); // Obtiene el rol del usuario almacenado
   const expectedRole = route.data['expectedRole']; // Obtiene el rol esperado de la configuración de la ruta
 
-  if (userRole && userRole === expectedRole) {
+  if (userRole && expectedRole.includes(userRole)) {
     return true; // Permite la navegación si el rol es correcto
   }
 

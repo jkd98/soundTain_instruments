@@ -10,12 +10,13 @@ import { Filtro } from '../../interfaces/filtro';
 })
 export class SharedListadoProductosComponent implements OnInit{
   @Input('productos') public productos:Producto[]=[];
-  
+
   constructor(
     private productoService:ProductoService
   ){}
   
   ngOnInit(): void {
+    
   }
 
   

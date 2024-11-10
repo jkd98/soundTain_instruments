@@ -1,7 +1,8 @@
 <div class="contenedor">
     <app-nav-bar></app-nav-bar>
     <div id="carrito" class="bg-white p-3">
-        @if(cart().length === 0){
+        
+        @if(cart.length === 0){
             <p class="text-center">El carrito esta vacio</p>
         }@else{
     
@@ -16,27 +17,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (item of cart(); track $index) {
+                    @for (prod of cart; track $index) {
     
                             <tr id="carI{{$index}}">
                                 <td>
-                                    <img class="img-fluid" src="../assets/img/{{item.image}}.jpg" alt="imagen guitarra" />
+                                    <!-- <img class="img-fluid" src="../assets/img/{{item.image}}.jpg" alt="imagen guitarra" /> -->
                                 </td>
-                            <td>{{item.nombre}}</td>
+                            <td>{{prod.producto.nombre}}</td>
                             <td class="fw-bold">
-                                {{item.precio}}
+                                {{prod.precio}}
                             </td>
                             <td class="flex align-items-start gap-4">
                                 <button
-                                (click)="decreaseQuantity(item.id)"
+                                (click)="decreaseQuantity(prod.producto._id)"
                                     type="button"
                                     class="btn btn-dark"
                                 >
                                     -
                                 </button>
-                                    {{item.quantity}}
+                                    {{prod.cantidad}}
                                 <button
-                                    (click)="increaseQuantity(item.id)"
+                                    (click)="increaseQuantity(prod.producto._id)"
                                     type="button"
                                     class="btn btn-dark"
                                 >
@@ -45,7 +46,7 @@
                             </td>
                             <td>
                                 <button
-                                    (click)="removeFromCart(item.id)"
+                                    (click)="removeFromCart(prod.producto._id)"
                                     class="btn btn-danger"
                                     type="button"
                                 >
@@ -58,31 +59,16 @@
                 </tbody>
             </table>
     
-            <p class="text-end">Total pagar: <span class="fw-bold">{{carTotal()}}</span></p>
+            <p class="text-end">Total pagar: <span class="fw-bold">{{carTotal}}</span></p>
             <button 
             (click)="clearCart()"
             class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
-        }
-    </div>
-    
-        
-    
-            <!-- Dirección -->
-            <br>
-            <label>Tu dirección es: <input type="text" id="direccion" disabled></label><br>
-    
-            <!-- Checkbox para cambiar dirección -->
-            <label for="NoCheck">No</label>
-            <input type="checkbox" id="NoCheck" onclick="habilitarDireccion()">
-    
-            <!-- Total del monto -->
-            <br><label>Total del monto a pagar<br><input type="text" id="totalMonto" value="$250" disabled></label>
-    
-            <!-- Botón de confirmar compra -->
-            <br><button class="btn-Original centrarObjetos" style="width: 200px;"><strong>CONFIRMAR COMPRA</strong></button>
             
-            <!-- Contenedor centrado de PayPal -->
-            <div class="centrar-boton">
-                <div #paypal></div>
-            </div>
+        }
+        <div class="centrar-boton">
+            <div #paypal ></div>
+            <!-- <button (click)="detalleVenta()" >Venta</button> -->
+        </div>
+    </div>
+            
 </div>

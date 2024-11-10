@@ -15,10 +15,6 @@ export class AdministradorProductosComponent {
 
   ngOnInit() {
     // Suscribirse a `modificando` para detectar cambios
-    this.productosService.modificando$.subscribe(value => {
-      this.modificando = value;
-      console.log('Modificando:', value);
-    });
 
     
   }

@@ -1,5 +1,8 @@
 <div class="productos__grid">
-@for (product of productos; track $index) {
-        <app-producto [producto]="product" ></app-producto>
+    @for (product of productos; track $index) {
+        @if (product) {
+            <app-producto [producto]="product"></app-producto>
+        }
     }
 </div>
+

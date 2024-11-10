@@ -1,57 +1,41 @@
-.cont-boton{
-    padding: 1.6rem;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 50rem;
-    text-align: center;
+.cont-boton {
+  display: flex;
+  justify-content: left;
+  padding: 1.6rem;
+  width: 30rem;
 }
 
-#btn-Agregar{
-    font-size: 2rem;
-    background-color: rgb(34, 187, 13);
-    border: none;
-    border-radius: 0.4rem;
-    width: 24rem;
-    height: 6rem;
-    margin-right: 3rem;
-}
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #f15050;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #ff2626;
-  }
+  padding: 2rem;
+  width: 100%;
+  color: var(--azul);
+  border-collapse: separate; /* Evita que los bordes de las celdas se unan */
+  border-spacing: 0; /* Asegura que no haya espacio entre las celdas */
+  border-radius: .8rem; /* Ajusta el radio de borde */
+  overflow: hidden; /* Hace que el borde sea visible */
+}
 
-#col-acciones{
+
+
+th,
+td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid var(--naranja);
+}
+
+th {
+  background-color: var(--naranja);
+  color: var(--blanco);
+  border: 1px solid var(--plata);
+}
+
+
+#col-acciones {
   width: 27rem;
 }
 
-#btn-editar{
-  font-size: medium;
-  background-color: rgb(216, 194, 0);
-  border: none;
-  border-radius: 0.4rem;
-  width: 9rem;
-  height: 4rem;
-  margin-right: 3rem;
-}
-  
-#btn-eliminar {
-  font-size: medium;
-  background-color: rgb(216, 0, 0);
-  border: none;
-  border-radius: 0.4rem;
-  width: 9rem;
-  height: 4rem;
-  color: white;
+.btns-c {
+  display: flex;
 }

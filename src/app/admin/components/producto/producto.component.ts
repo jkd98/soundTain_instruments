@@ -34,12 +34,12 @@ export class ProductoComponent  {
 
   ngOnInit() {
     // Suscribirse a `producto$` para obtener los datos del producto
-    this.productosService.producto$.subscribe(producto => {
+    /* this.productosService.(producto => {
       if (producto) {
         this.producto = producto;
         this.productoFormulario.patchValue(producto);
       }
-    })
+    }) */
   }
 
   // Método para enviar los datos actualizados
@@ -52,7 +52,7 @@ export class ProductoComponent  {
   }
 
   cerrarVentana(){
-    this.productosService.setModificando(false);
+    //this.productosService.setModificando(false);
   }
  
 }

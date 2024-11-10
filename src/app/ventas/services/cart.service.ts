@@ -1,126 +1,114 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
+import { RespuestaProducto } from '../../shared/interfaces/respuestaProducto';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Carrito, Producto } from '../intefaces/carrito';
+import { Order } from '../intefaces/orden';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   ///
-  private  carSignal = signal<any>([]); // definiendo una signal privada para el carrito de compras
-  public carReadonly = this.carSignal.asReadonly();  // definiendo una signal de solo lectura para imprimir la carSignal
+  private baseURL: string = environment.API;
   
-  private cartTotalSignal = signal<number>(0);
-  public cartTotalReadonly = this.cartTotalSignal.asReadonly();
-
-  private maxIems = 5;
-  private minItems = 1;
   ///
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     // Cuando alguna señal cambie, se hace las sentencias indicadas
-      // Aqui solo se le da la instruccion de almacenar en localStrorage
-      // No se permite la escritura a signals
-    effect(()=>this.saveLocalStorage());
-   }
+    // Aqui solo se le da la instruccion de almacenar en localStrorage
+    // No se permite la escritura a signals
+  }
   ///
 
-  // Funcion para añadir elementos a la signal
-  addItems(item:any){
-    const itemExists = this.carReadonly().findIndex((guitar:any)=>guitar._id===item._id); // devuelve el index si encontro el elemento 
-    if(itemExists === -1){ // si no encuentra el elemento en el array
-      item.quantity = 1; // agrego una unidad a la cantidad
-      this.carSignal.update((value)=>[...value,item]); // actualizo el array pasando una copia de sus elementos mas el nuevo item
-      console.log(this.carReadonly());
-    }else{ // si ya existe el elemento dentro del array
-      
-      // Validacion para que la cantidad no rebase el limite
-      if(this.carSignal()[itemExists].quantity >= this.maxIems) return;
 
-      const updatedCart = [...this.carReadonly()]; // crea una copia para no mutar el original
-      // busco el elemento en el array con el index recuperado por findIndex(()=>{})
-      updatedCart[itemExists].quantity++; // una vez localizado, se aumenta en una unidad, a la catidad ya existente 
-      //item.quantity++;
-      this.carSignal.set(updatedCart); // se actuzliza la signal con los cambios
-      console.log('Existe :'+itemExists);
-      console.log(this.carReadonly());
+  addToCart(productoId: string, cantidad: number): Observable<any> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
 
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
     }
-    // Guardar en localStorage
-    this.saveLocalStorage();
-    // Calcular el total
-    this.cartTotal();
+
+    return this.http.post(`${this.baseURL}/carrito/agregar`, { productoId, cantidad }, { headers });
   }
 
-  //Funcion para calcular el total a pagar
-  cartTotal(){
-    const total = this.carReadonly().reduce((total:any,item:any)=> total + (item.quantity*item.precio),0);
-    this.cartTotalSignal.set(total);
+  removeFromCartB(productoId: string): Observable<any> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.delete(`${this.baseURL}/carrito/eliminar`, { headers, body: { productoId } });
   }
 
-  //Funcion para remover elementos del carrito
-  removeFromCart(id:any){
-    const updatedCart = this.carReadonly().filter((item:any) => item.id !== id ) //recupero los elementos a conservar
-    console.log(updatedCart);
-    this.carSignal.set(updatedCart);
-    this.cartTotal();
+  increaseQuantityB(productoId: string): Observable<any> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.put(`${this.baseURL}/carrito/incrementar`, { productoId }, { headers });
   }
 
-  //Funcion para incrementar cantidad de un elemnto del carrito
-  increaseQuatity(id:any){
-    const updatedCart = this.carReadonly().map((item:any)=>{
-      // si el elemento a modificar existe y que la catidad no rebase el limite
-      if(item.id===id && item.quantity < this.maxIems){
-        // crea una copia del item y la cantidad aumenta en 1
-        return{
-          ...item,
-          quantity:item.quantity+1
-        }
-      }
-      // si el valor no se encuentra, se pasan los items como estan
-      return item;
-    });
-    this.carSignal.set(updatedCart);
-    this.cartTotal(); // recalcular
-    //console.log('Incrementando...elemnto'+id);
+  decreaseQuantityB(productoId: Producto['_id']): Observable<any> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.put(`${this.baseURL}/carrito/decrementar`, { productoId }, { headers });
   }
 
-  //Funcion para decrementar la cantidad de un elemento del carrito de compras
-  decreaseQuantity(id:any){
-    const updatedCart = this.carReadonly().map((item:any)=>{
-      if(item.id === id && item.quantity > this.minItems ){
-        return{
-          ...item,
-          quantity:item.quantity-1
-        }
-      }
-      return item;
-    });
-    this.carSignal.set(updatedCart);
-    this.cartTotal();
+  // Método para obtener el carrito del usuario
+  fetchCart():Observable<RespuestaProducto>{
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.get<RespuestaProducto>(`${this.baseURL}/carrito/`, { headers })
+      .pipe(
+        catchError(error => of())
+      )
   }
 
-  // Funcion para limpiar el carrito de compras
-  clearCart(){
-    this.carSignal.set([]);
-    this.cartTotal();
+  // Metodo para realizar la compra
+  realizarCompra(orden:Order):Observable<RespuestaProducto>{
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+    
+    console.log(orden)
+    
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+    
+
+    return this.http.post<RespuestaProducto>(`${this.baseURL}/carrito/compras`,{orden},{ headers });
+    
   }
 
-  // Funcion que guarda el estdo del carrito de compras en localStorage
-  saveLocalStorage(){
-    window.localStorage.setItem('cart',JSON.stringify(this.carReadonly()));
-  }  
+  borrarTodo():Observable<RespuestaProducto>{
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.delete<RespuestaProducto>(`${this.baseURL}/carrito/eliminar-all`,{ headers });
+  }
+
   
-  // Funcion para eliminar elementos del localstorage
-  deleteLocalStorage(){
-    const itemsSaved = window.localStorage.getItem('cart');
-    if(itemsSaved !== null){
-      window.localStorage.removeItem('cart');
-    }
-  }
-
-  initialCart(){
-    const itemsSaved = window.localStorage.getItem('cart');
-    if(itemsSaved!==null){
-      this.carSignal.set(JSON.parse(itemsSaved));
-      this.cartTotal();
-    }
-  }
 }

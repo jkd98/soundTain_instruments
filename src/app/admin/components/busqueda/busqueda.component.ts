@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ProductoService } from '../../../shared/services/producto.service';
+import { Producto } from '../../../shared/interfaces/producto';
 
 @Component({
   selector: 'app-busqueda',
@@ -8,10 +10,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class BusquedaComponent {
   busquedaForm: FormGroup;
-
-  constructor(private fb: FormBuilder) {
+  public productos:Producto[] = [];
+  
+  constructor(
+    private fb: FormBuilder,
+    private productoService:ProductoService
+  ) {
     this.busquedaForm = this.fb.group({
-      busqueda: [''] // Inicializa el control
+      nombre: [''] // Inicializa el control
     });
   }
 
@@ -19,7 +25,16 @@ export class BusquedaComponent {
   }
 
   onSubmit() {
-    const valorBusqueda = this.busquedaForm.get('busqueda')?.value;
-    console.log('Valor de búsqueda:', valorBusqueda);
+    this.aplicarFiltros()
+  }
+
+  aplicarFiltros() {
+    const filtros = this.busquedaForm.value;
+    this.productoService.getProductosFiltrados(filtros)
+      .subscribe(resp => {
+        this.productos = resp.data;
+        console.log(resp);
+        console.log(this.productos);
+      });
   }
 }

@@ -2,7 +2,7 @@
   <app-nav-bar></app-nav-bar>
 </div>
 
-<div class="contenido ">
+<div class="contenido contenedor">
   <!-- Contenedor izquierda: filtros -->
   <div class="izquierda-column">
     <div class="opciones-filtros">
@@ -42,7 +42,9 @@
   <!-- Contenedor derecha: tarjetas -->
   <div class="derecha-column">
     <h2>Productos</h2>
-    <app-shared-listado-productos [productos]="productos"></app-shared-listado-productos>
+    <app-shared-listado-productos [productos]="products"></app-shared-listado-productos>
+    <button class="btn-Original" (click)="masComents()">Ver Más</button>
+
   </div>
 </div>
 

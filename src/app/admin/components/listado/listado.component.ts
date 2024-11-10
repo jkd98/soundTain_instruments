@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AdminProductos } from '../../admin-productos';
 import { ProductoService } from '../../../shared/services/producto.service';
 import { Producto } from '../../../shared/interfaces/producto';
@@ -9,6 +9,9 @@ import { Producto } from '../../../shared/interfaces/producto';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
+
+  @Input('prods') prods:Producto[] = [];
+
   constructor(private productosService: ProductoService) {}
 
   producto : Producto [] = [{
@@ -25,20 +28,22 @@ export class ListadoComponent {
    
   
 
-  editProduct(product: Producto) {
+  editProduct(product: Producto['_id']) {
     // Lógica para modificar el producto
-    this.productosService.setModificando(true);
-    this.productosService.setProducto(product)
+    //this.productosService.setModificando(true);
+    //this.productosService.setProducto(product)
     console.log('Modificar producto:', product);
   }
 
   crearProducto(){
     // Lógica para crear el producto
-    this.productosService.setModificando(true);
+    //this.productosService.setModificando(true);
   }
 
-  deleteProduct(productId: string) {
+  deleteProduct(productId: Producto['_id']) {
     this.producto = this.producto.filter(producto => producto._id !== productId);
     console.log('Producto eliminado con ID:', productId);
   }
+
+  
 }

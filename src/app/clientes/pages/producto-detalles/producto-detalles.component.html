@@ -35,7 +35,7 @@
                         class="quantity-input">
                 </div>
                 <div class="units-available">Disponibles: {{producto.cantidad}} unidades</div>
-                <a href="#" class="buy-button">Comprar ahora</a>
+                <!-- <a href="#" class="buy-button">Comprar ahora</a> -->
                 <button class="btn-Original" (click)="aggCart()">Agregar al carrito</button>
                 <div class="card">
                     <p-messages [(value)]="messages" [enableService]="false" [closable]="false" />
@@ -48,22 +48,29 @@
         <h2 class="productos__title">Productos relacionados</h2>
         <app-slider-productos></app-slider-productos>
     </div>
-
-    <div class="comments-section">
-        <h2>Comentarios</h2>
-        <div class="rating-section">
-            <label class="rating-label">Califica este producto:</label>
-            <div class="star-rating">
-                <span class="star" [ngClass]="{'selected':calif>=1}" (click)="selectStar(1)">&#9733;</span>
-                <span class="star" [ngClass]="{'selected':calif>=2}" (click)="selectStar(2)">&#9733;</span>
-                <span class="star" [ngClass]="{'selected':calif>=3}" (click)="selectStar(3)">&#9733;</span>
-                <span class="star" [ngClass]="{'selected':calif>=4}" (click)="selectStar(4)">&#9733;</span>
-                <span class="star" [ngClass]="{'selected':calif>=5}" (click)="selectStar(5)">&#9733;</span>
+    @defer () {
+        <div class="comments-section">
+            <h2 class="coments__title">Comentarios</h2>
+            <section class="comentarios-lists" >
+                <app-comentario [producto]="getProd()" ></app-comentario>
+            </section>
+            <br>
+            <div class="rating-section">
+                <label class="rating-label">Califica este producto:</label>
+                <div class="star-rating">
+                    <span class="star" [ngClass]="{'selected':calif>=1}" (click)="selectStar(1)">&#9733;</span>
+                    <span class="star" [ngClass]="{'selected':calif>=2}" (click)="selectStar(2)">&#9733;</span>
+                    <span class="star" [ngClass]="{'selected':calif>=3}" (click)="selectStar(3)">&#9733;</span>
+                    <span class="star" [ngClass]="{'selected':calif>=4}" (click)="selectStar(4)">&#9733;</span>
+                    <span class="star" [ngClass]="{'selected':calif>=5}" (click)="selectStar(5)">&#9733;</span>
+                </div>
             </div>
+            <textarea #commentInput class="comment-textarea" rows="4" placeholder="Escribe tu comentario..."></textarea>
+            <button class="btn-Original" (click)="onSubmitCmts()">Publicar comentario</button>
         </div>
-        <textarea #commentInput class="comment-textarea" rows="4" placeholder="Escribe tu comentario..."></textarea>
-        <button class="btn-Original" (click)="onSubmitCmts()">Publicar comentario</button>
-    </div>
-
-    <app-footer></app-footer>
+    }
+    
+    @defer () {
+        <app-footer></app-footer>
+    }
 </div>

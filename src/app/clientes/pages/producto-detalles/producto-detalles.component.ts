@@ -30,6 +30,10 @@ export class ProductoDetallesComponent implements OnInit {
     private route: Router
   ) { }
 
+  getProd(){
+    return this.id;
+  }
+
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.id = '';
@@ -37,10 +41,9 @@ export class ProductoDetallesComponent implements OnInit {
       .subscribe(params => {
         this.id = params['ins'];
       }
-      );
-    //console.log(id);
+    );
+    
     this.obtenerProducto(this.id);
-
   }
 
   obtenerProducto(id: Producto['_id']) {
@@ -52,6 +55,7 @@ export class ProductoDetallesComponent implements OnInit {
       });
   }
 
+  
   selectStar(num: number) {
     console.log(num);
     this.calif = num;
@@ -76,10 +80,10 @@ export class ProductoDetallesComponent implements OnInit {
 
   aggCart(): void {
     if (window.sessionStorage.getItem('rol')) {
-      this.cartService.addItems(this.producto);
-      this.messages = [
-        { severity: 'success', detail:'Producto agregado al carrito' },
-      ];
+      this.cartService.addToCart(this.getProd()!,1).
+      subscribe(resp => {
+        console.log(resp);
+      });
     } else {
       let url: string = `/clientes/instrumento/${this.id}`;
       window.sessionStorage.setItem('redirectUrl', url);
@@ -87,5 +91,7 @@ export class ProductoDetallesComponent implements OnInit {
 
     }
   }
+
+  
 
 }

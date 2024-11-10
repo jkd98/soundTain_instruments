@@ -1,5 +1,5 @@
 <div class="cont-boton">
-  <button id="btn-Agregar" (click)="crearProducto()"><strong>Agregar Producto!</strong></button>
+  <button id="btn-Agregar" class="btn-Original" (click)="crearProducto()"><strong>Agregar Producto!</strong></button>
 </div>
 
 <table>
@@ -13,15 +13,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let productos of producto">
-        <td>{{ productos.nombre }}</td>
-        <td>{{ productos.categoria }}</td>
-        <td>{{ productos.precio| currency }}</td>
-        <td>{{ productos.cantidad }}</td>
-        <td id="col-acciones">
-          <button id="btn-editar" (click)="editProduct(productos)">Modificar</button>
-          <button id="btn-eliminar" (click)="deleteProduct(productos._id!)">Eliminar</button>
+      @for (product of prods; track $index) {
+        <tr>
+          <td>{{ product.nombre }}</td>
+        <td>{{ product.categoria }}</td>
+        <td>{{ product.precio| currency }}</td>
+        <td>{{ product.cantidad }}</td>
+        <td id="col-acciones" >
+          <div class="btns-c" >
+            <button id="btn-editar" class="btn-Original-azul" (click)="editProduct(product._id!)">Modificar</button>
+            <button id="btn-eliminar" class="btn-Original"  (click)="deleteProduct(product._id!)">Eliminar</button>
+
+          </div>
         </td>
       </tr>
+    }
     </tbody>
   </table>
