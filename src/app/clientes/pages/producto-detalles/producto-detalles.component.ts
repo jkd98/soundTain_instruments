@@ -45,13 +45,14 @@ export class ProductoDetallesComponent implements OnInit {
     
     this.obtenerProducto(this.id);
   }
-
+  
   obtenerProducto(id: Producto['_id']) {
     this.productoService.getDetalleProducto(id)
-      .subscribe(resp => {
-        console.log(resp);
-        this.producto = resp.data.producto;
-        this.productoIMG = resp.data.imagenURL;
+    .subscribe(resp => {
+      console.log(resp);
+      this.producto = resp.data.producto;
+      this.productoIMG = resp.data.imagenUrl;
+      console.log(this.productoIMG);
       });
   }
 

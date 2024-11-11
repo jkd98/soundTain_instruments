@@ -4,20 +4,21 @@ import { RouterModule, Routes } from "@angular/router";
 //import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { ProductoComponent } from "./components/producto/producto.component";
 import { AdministradorProductosComponent } from "./pages/administrador-productos/administrador-productos.component";
+import { BusquedaComponent } from "./components/busqueda/busqueda.component";
+import { LayoutAdmPagesComponent } from "./pages/layout-adm-pages/layout-adm-pages.component";
 
 const routes: Routes = [
     {
-        path: 'admin',
-        component: AdministradorProductosComponent,
-        //children: [
-        //    { path:'inicio', component:HomePageComponent },
-        //    { path:'**', redirectTo:'inicio'  }
-        //]
-    },
-    {
-        path:"**",
-        redirectTo:'admin'
-    },
+        path: '',
+        component: LayoutAdmPagesComponent,
+        children: [
+            { path:'busqueda', component:AdministradorProductosComponent },
+            { path: 'nuevo', component: ProductoComponent  },
+            { path: 'edit/:id', component: ProductoComponent  },
+
+            { path:'**', redirectTo:'busqueda'  }
+        ]
+    }
 ];
 
 @NgModule({

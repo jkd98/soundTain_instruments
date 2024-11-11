@@ -16,7 +16,6 @@ export class SharedListadoProductosComponent implements OnInit{
   ){}
   
   ngOnInit(): void {
-    
   }
 
   

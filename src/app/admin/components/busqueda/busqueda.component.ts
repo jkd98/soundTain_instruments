@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProductoService } from '../../../shared/services/producto.service';
 import { Producto } from '../../../shared/interfaces/producto';
@@ -8,7 +8,7 @@ import { Producto } from '../../../shared/interfaces/producto';
   templateUrl: './busqueda.component.html',
   styleUrl: './busqueda.component.css'
 })
-export class BusquedaComponent {
+export class BusquedaComponent implements OnInit{
   busquedaForm: FormGroup;
   public productos:Producto[] = [];
   
@@ -22,6 +22,12 @@ export class BusquedaComponent {
   }
 
   ngOnInit(): void {
+    this.productoService.getProdNuevos()
+      .subscribe(
+        resp => {
+          console.log(resp);
+          this.productos = resp.data;
+        });
   }
 
   onSubmit() {

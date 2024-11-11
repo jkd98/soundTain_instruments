@@ -7,6 +7,7 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { ListadoComponent } from './components/listado/listado.component';
 import { AdministradorProductosComponent } from './pages/administrador-productos/administrador-productos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutAdmPagesComponent } from './pages/layout-adm-pages/layout-adm-pages.component';
 
 
 
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BusquedaComponent,
     ListadoComponent,
     AdministradorProductosComponent,
+    LayoutAdmPagesComponent,
     
   ],
   imports: [

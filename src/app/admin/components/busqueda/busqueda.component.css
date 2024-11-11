@@ -4,7 +4,14 @@
     align-items: center;
     height: 17vh; 
   }
+
   
+.adm__title {
+  margin: 0;
+  color: var(--azul);
+  padding-top: 3rem;
+}
+
   form {
     display: flex;
   }

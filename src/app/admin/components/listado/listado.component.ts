@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { AdminProductos } from '../../admin-productos';
 import { ProductoService } from '../../../shared/services/producto.service';
 import { Producto } from '../../../shared/interfaces/producto';
+import { Router } from '@angular/router';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-listado',
@@ -11,8 +13,9 @@ import { Producto } from '../../../shared/interfaces/producto';
 export class ListadoComponent {
 
   @Input('prods') prods:Producto[] = [];
-
-  constructor(private productosService: ProductoService) {}
+  constructor(
+    private productosService: ProductoService, 
+    private router:Router) {}
 
   producto : Producto [] = [{
     _id:"1",
@@ -25,6 +28,8 @@ export class ListadoComponent {
     seccionEstante: "Seccion 6",
     imagen: "bateria.jpg"
   }]
+
+
    
   
 
@@ -32,17 +37,22 @@ export class ListadoComponent {
     // Lógica para modificar el producto
     //this.productosService.setModificando(true);
     //this.productosService.setProducto(product)
-    console.log('Modificar producto:', product);
+    this.router.navigate(['/administracion/edit',product]);
+
   }
 
   crearProducto(){
     // Lógica para crear el producto
+    this.router.navigate(['/administracion/nuevo']);
     //this.productosService.setModificando(true);
   }
 
   deleteProduct(productId: Producto['_id']) {
-    this.producto = this.producto.filter(producto => producto._id !== productId);
-    console.log('Producto eliminado con ID:', productId);
+    this.productosService.deleteProducto(productId)
+      .subscribe(resp => {
+        console.log(resp);
+        this.router.navigate(['/administracion/']);
+      })
   }
 
   

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Producto } from '../../interfaces/producto';
+import { ProductoService } from '../../services/producto.service';
 
 @Component({
   selector: 'app-producto',
@@ -7,17 +8,23 @@ import { Producto } from '../../interfaces/producto';
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
+
 @Input('producto') producto!: Producto;
-@Input('imagen') imgProducto: Producto['imagen'] = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mrcdinstrumentos.com.mx%2Fshared%2Fproductos%2F14870%2F8202510.jpg&f=1&nofb=1&ipt=078c2e8fb07e0924f5e5bec18cf065e750b598f95c6a98198fcfa10110bd9b14&ipo=images";
+@Input('imagen') imgProducto: Producto['imagen'] = '' ;
+
+constructor(
+  private productoService:ProductoService
+){}
 
 getProducto(){
-  const product:Producto = {
+  let product:Producto;
+  product = {
     _id:this.producto._id,
     nombre:this.producto.nombre,
     descripcion:this.producto.descripcion,
-    precio:this.producto.precio
+    precio:this.producto.precio,
+    imagen:this.producto.imagen
   };
-
   return product;
 }
   

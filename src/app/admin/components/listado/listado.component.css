@@ -16,19 +16,16 @@ table {
   overflow: hidden; /* Hace que el borde sea visible */
 }
 
-
-
 th,
 td {
   padding: 8px;
   text-align: center;
-  border: 1px solid var(--naranja);
+  border-bottom: 1px solid var(--naranja);
 }
 
 th {
   background-color: var(--naranja);
   color: var(--blanco);
-  border: 1px solid var(--plata);
 }
 
 
