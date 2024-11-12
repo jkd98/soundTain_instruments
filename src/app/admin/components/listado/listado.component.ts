@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { AdminProductos } from '../../admin-productos';
 import { ProductoService } from '../../../shared/services/producto.service';
-import { Producto } from '../../../shared/interfaces/producto';
+import { CategoriaProducto, Producto } from '../../../shared/interfaces/producto';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
 
@@ -23,7 +23,7 @@ export class ListadoComponent {
     descripcion: "Suena chido",
     precio: 1234,
     cantidad: 24,
-    categoria: "viento",
+    categoria: CategoriaProducto.Percusion,
     estante: "Estante 4",
     seccionEstante: "Seccion 6",
     imagen: "bateria.jpg"

@@ -5,5 +5,7 @@ export interface Comentario {
     calificacion: number
     comentario: string
     producto: Producto['_id'],
-    usuario?:{id:Usuario['_id'],nombre:Usuario['nombre']}
+    usuario?:{id:Usuario['_id'],nombre:Usuario['nombre']},
+    createdAt?:Date
+
 }

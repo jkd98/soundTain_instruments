@@ -5,7 +5,7 @@
       <div class="card">
         <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
       </div>
-      <form class="nv-form" [formGroup]="productoFormulario" >
+      <form class="nv-form" [formGroup]="productoFormulario">
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" formControlName="nombre" placeholder="Introduce el nombre del producto">
 
@@ -25,10 +25,16 @@
 
           </div>
 
-          <div class="campo">
-            <label for="categoria">Categoría</label>
-            <input type="text" id="categoria" formControlName="categoria" placeholder="Introduce la categoría">
-          </div>
+          <label>
+            Categoría:
+            <select formControlName="categoria">
+              <option value="">Selecciona una categoría</option>
+              @for (categoria of categorias; track $index) {
+              <option [value]="categoria">{{categoria}}</option>
+              }
+
+            </select>
+          </label>
 
         </div>
 
@@ -57,9 +63,9 @@
 
         <div>
           @if (!edit) {
-            <input (click)="onSubmit()" class="btn-Original" type="submit" value="Guardar Producto">
-          }@else { 
-            <input (click)="onEdit()" class="btn-Original" type="submit" value="Guardar Cambios">
+          <input (click)="onSubmit()" class="btn-Original" type="submit" value="Guardar Producto">
+          }@else {
+          <input (click)="onEdit()" class="btn-Original" type="submit" value="Guardar Cambios">
 
           }
         </div>

@@ -13,9 +13,10 @@
             Categoría:
             <select formControlName="categoria">
               <option value="">Selecciona una categoría</option>
-              <option value="guitarras">Guitarras</option>
-              <option value="baterias">Baterías</option>
-              <option value="viento">Viento</option>
+              @for (categoria of categorias; track $index) {
+              <option [value]="categoria">{{categoria}}</option>
+              }
+
             </select>
           </label>
 

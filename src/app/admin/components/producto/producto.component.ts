@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Producto } from '../../../shared/interfaces/producto';
 import { ProductoService } from '../../../shared/services/producto.service';
 import { Message } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-producto-form-admin',
@@ -18,12 +18,14 @@ export class ProductoComponent implements OnInit {
   public file: File | null = null;
   public edit: boolean = false;
   public id: Producto['_id'] = ''
+  public categorias = ['Percusión', 'Teclas', 'Viento', 'Membranófonos','Electrófonos'];
 
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private productosService: ProductoService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -71,6 +73,7 @@ export class ProductoComponent implements OnInit {
       this.productosService.aggProd(formData).subscribe(resp => {
         console.log(resp);
         this.messages = [{ severity: 'success', detail: resp.msg }];
+        this.productoFormulario.reset();
       });
     }
   }
@@ -81,6 +84,9 @@ export class ProductoComponent implements OnInit {
       .subscribe(resp => {
         console.log(resp);
         this.messages = [{ severity: 'success', detail: resp.msg }];
+        setTimeout(() => {
+          this.router.navigate(['/administracion/busqueda'])
+        }, 1500);
       });
   }
 

@@ -16,13 +16,13 @@ const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule ),
     canActivate:[authGuard],
-    data: {expectedRole:['Cliente','Admin']}
+    data: {expectedRole:['Cliente','ADMTlN']}
   },
   {
     path: 'administracion',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     canActivate:[authGuard],
-    data: {expectedRole:'Admin'}
+    data: {expectedRole:'ADMTlN'}
   },
   {
     path: 'nosotros',

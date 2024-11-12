@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Comentario } from '../../../auth/intefaces/comentario';
 import { Producto } from '../../interfaces/producto';
 import { ComentarioService } from '../../../clientes/services/comentario.service';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-comentario',
@@ -13,13 +15,14 @@ export class ComentarioComponent implements OnInit{
   @Input('producto') prod:Producto['_id'] = '';
   public allComents:Comentario[] = [];
   public coments:Comentario[]=[];
-  public iniciales:number = 2;
+  public iniciales:number = 3;
   public siguientes:number = 2;
   public actuales:number = 0;
 
   constructor(
     private comentarioService: ComentarioService,
   ){}
+  
 
   ngOnInit(): void {
     this.comentariosProducto(this.prod);  
@@ -36,25 +39,16 @@ export class ComentarioComponent implements OnInit{
       });
   }
 
-  comentsIniciales(){
-    let i = 0;
-    for(i;i<=this.iniciales;i++){
-      this.coments.push(this.allComents[i]);
-    }
-    this.actuales = i;
+  comentsIniciales() {
+    this.coments = this.allComents.slice(0, this.iniciales); // Muestra los primeros 3 productos
+    this.actuales = this.iniciales;
   }
 
-  masComents(){
-    console.log(this.actuales);
-    console.log(this.actuales+this.siguientes);
-    console.log(this.coments);
-    let i = this.actuales;
-    for(i;i<=(this.actuales+this.siguientes);i++){
-      this.coments.push(this.allComents[i]);
-    }
-    console.log(this.coments);
-  
-    this.actuales = i;
+  masComents() {
+    const nuevosCmts = this.allComents.slice(this.actuales, this.actuales + this.siguientes);
+
+    this.coments = [...this.coments, ...nuevosCmts]; // Añade los siguientes productos al array actual
+    this.actuales += this.siguientes; // Actualiza el índice de productos mostrados
   }
 
 
