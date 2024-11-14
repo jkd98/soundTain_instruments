@@ -8,6 +8,8 @@ import { OlvidePassComponent } from './pages/olvide-pass/olvide-pass.component';
 import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.component';
 import { NuevaPassComponent } from './pages/nueva-pass/nueva-pass.component';
 import { publicGuard } from './guards/public.guard';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,8 @@ const routes: Routes = [
       { path: 'recuperar-cuenta', component: OlvidePassComponent },
       { path: 'nueva-pass', component: NuevaPassComponent },
       { path: 'nueva-pass/:tkn', component: NuevaPassComponent },
+      { path: 'perfil', component:PerfilComponent},
+      { path: 'edit-perfil', component:EditarPerfilComponent },
       { path: '**', redirectTo: 'login' }
     ]
   },

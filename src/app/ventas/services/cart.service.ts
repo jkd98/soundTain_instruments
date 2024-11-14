@@ -110,5 +110,14 @@ export class CartService {
     return this.http.delete<RespuestaProducto>(`${this.baseURL}/carrito/eliminar-all`,{ headers });
   }
 
-  
+  historialCompras():Observable<RespuestaProducto> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.get<RespuestaProducto>(`${this.baseURL}/orden/historial-compras`,{ headers });
+  }  
 }

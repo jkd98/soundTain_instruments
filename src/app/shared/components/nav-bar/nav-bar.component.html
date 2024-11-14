@@ -22,7 +22,13 @@
             <a class="nav__enlace" routerLink="/administracion/" routerLinkActive="active-link" >Gestionar tienda</a>
         }
         @if (log) {
-            <a class="nav__enlace" (click)="logOut()" >Cerrar Sesion</a>
+            <div class="profile-menu">
+                <span class="profile-name">{{ usr.nombre }}</span> <!-- Muestra el nombre del usuario -->
+                <div class="dropdown-menu">
+                    <a routerLink="/auth/perfil" class="dropdown-item">Ver Perfil</a>
+                    <a (click)="logOut()" class="dropdown-item">Cerrar Sesión</a>
+                </div>
+            </div>
         }@else {
             <a class="nav__enlace" routerLink="/auth" >Iniciar Sesión</a>
         }
@@ -37,7 +43,7 @@
     </div>
 
     <div class="nav__cart">
-        <a routerLink="/carrito">
+        <a routerLink="/ventas/cart">
             <img src="assets/iconCarrito.svg" alt="icono carrito">
         </a>
     </div>

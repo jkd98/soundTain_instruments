@@ -114,3 +114,43 @@
 .active-link{
     background-color: var(--naranja);
 }
+
+/**/
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-name {
+    cursor: pointer;
+    color: var(--blanco);
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--naranja);
+    border-radius: 0.3rem;
+    min-width: 10rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-item {
+    color: var(--blanco);
+    padding: 0.5rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: var(--azul);
+}
+
+.profile-menu:hover .dropdown-menu {
+    display: block;
+}

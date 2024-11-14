@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 import { Route, Router, RouteReuseStrategy } from '@angular/router';
+import { Usuario } from '../../interfaces/usuario';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,6 +14,7 @@ export class NavBarComponent implements OnInit {
   public showMenu: boolean = false;
   public log: boolean = false;
   private rol:string = '';
+  public usr!:Usuario;
 
   getRol(){
     return this.rol;
@@ -23,6 +25,13 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.log = window.sessionStorage.getItem('tkn') ? true : false;
     this.rol = window.sessionStorage.getItem('rol') ? window.sessionStorage.getItem('rol')! : '';
+    if(this.log){
+      this.authServ.obtenerPerfil()
+        .subscribe(resp => {
+          console.log(resp);
+          this.usr = resp.data;
+        })
+    }
   }
   
   onShowMenu(): void {

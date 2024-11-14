@@ -20,6 +20,8 @@ import { ConfirmarPageComponent } from './pages/confirmar-page/confirmar-page.co
 import { OlvidePassComponent } from './pages/olvide-pass/olvide-pass.component';
 import { AlertaComponent } from './components/alerta/alerta.component';
 import { NuevaPassComponent } from './pages/nueva-pass/nueva-pass.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { NuevaPassComponent } from './pages/nueva-pass/nueva-pass.component';
     ConfirmarPageComponent,
     OlvidePassComponent,
     AlertaComponent,
-    NuevaPassComponent
+    NuevaPassComponent,
+    PerfilComponent,
+    EditarPerfilComponent
   ],
   imports: [
     CommonModule,

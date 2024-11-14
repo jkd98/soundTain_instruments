@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./clientes/clientes.module').then( m => m.ClientesModule )
   },
   {
-    path: 'carrito',
+    path: 'ventas',
     loadChildren: () => import('./ventas/ventas.module').then( m => m.VentasModule ),
     canActivate:[authGuard],
     data: {expectedRole:['Cliente','ADMTlN']}
