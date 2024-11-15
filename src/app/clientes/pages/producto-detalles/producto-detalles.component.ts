@@ -20,7 +20,9 @@ export class ProductoDetallesComponent implements OnInit {
   public productoIMG: Producto['imagen'] = '';
   private id: Producto['_id'] = '';
   @ViewChild('commentInput') commentInputRef!: ElementRef; // Referencia al textarea
+  @ViewChild('cantidad') cantidad!: ElementRef; // Referencia a cantidad
   public messages: Message[] = [];
+  public productosFilt:Producto[]=[];
 
   constructor(
     private productoService: ProductoService,
@@ -52,6 +54,7 @@ export class ProductoDetallesComponent implements OnInit {
       console.log(resp);
       this.producto = resp.data.producto;
       this.productoIMG = resp.data.imagenUrl;
+      this.filtrar(resp.data.producto.categoria);
       console.log(this.productoIMG);
       });
   }
@@ -81,7 +84,9 @@ export class ProductoDetallesComponent implements OnInit {
 
   aggCart(): void {
     if (window.sessionStorage.getItem('rol')) {
-      this.cartService.addToCart(this.getProd()!,1).
+      const cantidad: Producto['cantidad'] = this.cantidad.nativeElement.value;
+      //console.log(cantidad);
+      this.cartService.addToCart(this.getProd()!,cantidad ? cantidad : 1).
       subscribe(resp => {
         console.log(resp);
       });
@@ -93,6 +98,12 @@ export class ProductoDetallesComponent implements OnInit {
     }
   }
 
-  
+  filtrar(categoria:string) {
+    this.productoService.getProductosFiltrados({categoria})
+      .subscribe(resp => {
+        console.log(resp);
+        this.productosFilt = resp.data;
+    });
+  }
 
 }

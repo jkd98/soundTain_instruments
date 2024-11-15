@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'soundTain_Waves-noSt';
+  toUpp(){
+    window.scroll(0,0);
+  }
 }

@@ -10,7 +10,7 @@
     </div>
 
     <div class="nav__logo">
-        <h1 class="logo">logo</h1>
+        <h1 class="logo">SoundTain-<span>Instruments</span></h1>
     </div>
 
 
@@ -21,7 +21,7 @@
         @if (getRol()==='ADMTlN') {
             <a class="nav__enlace" routerLink="/administracion/" routerLinkActive="active-link" >Gestionar tienda</a>
         }
-        @if (log) {
+        @if (usr) {
             <div class="profile-menu">
                 <span class="profile-name">{{ usr.nombre }}</span> <!-- Muestra el nombre del usuario -->
                 <div class="dropdown-menu">

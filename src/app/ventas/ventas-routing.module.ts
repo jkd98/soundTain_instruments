@@ -9,10 +9,6 @@ const routes: Routes = [
         component: CarritoComponent
     },
     {
-        path: 'historial-ventas',
-        component: HistorialComprasComponent
-    },
-    {
       path: '**',
       redirectTo:'cart'
   },

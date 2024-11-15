@@ -6,6 +6,7 @@ import { ProductoComponent } from "./components/producto/producto.component";
 import { AdministradorProductosComponent } from "./pages/administrador-productos/administrador-productos.component";
 import { BusquedaComponent } from "./components/busqueda/busqueda.component";
 import { LayoutAdmPagesComponent } from "./pages/layout-adm-pages/layout-adm-pages.component";
+import { HistorialComprasComponent } from "../ventas/pages/historial-compras/historial-compras.component";
 
 const routes: Routes = [
     {
@@ -15,7 +16,8 @@ const routes: Routes = [
             { path:'busqueda', component:AdministradorProductosComponent },
             { path: 'nuevo', component: ProductoComponent  },
             { path: 'edit/:id', component: ProductoComponent  },
-
+            { path: 'historial-ventas', component: HistorialComprasComponent
+            },
             { path:'**', redirectTo:'busqueda'  }
         ]
     }

@@ -5,20 +5,21 @@
     </div>
     
     <div class="listado-modelos ">
-        <div class="modelo modelo-w">
-            <h3>Teclas</h3>
+        
+        <div class="modelo modelo-w" (click)="filtrar(categorias[0])" >
+            <h3>{{categorias[0]}}</h3>
         </div>
 
-        <div class="modelo modelo-x">
-            <h3>Guitarras eléctricas</h3>
+        <div class="modelo modelo-x" (click)="filtrar(categorias[1])" >
+            <h3>{{categorias[1]}}</h3>
         </div>
 
-        <div class="modelo modelo-y">
-            <h3>Percusión</h3>
+        <div class="modelo modelo-y" (click)="filtrar(categorias[2])" >
+            <h3>{{categorias[2]}}</h3>
         </div>
         
-        <div class="modelo modelo-z">
-            <h3>Viento</h3>
+        <div class="modelo modelo-z" (click)="filtrar(categorias[3])" >
+            <h3>{{categorias[3]}}</h3>
         </div>
     </div>
 </div>

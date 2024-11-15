@@ -14,7 +14,7 @@ export class ComentarioComponent implements OnInit{
   
   @Input('producto') prod:Producto['_id'] = '';
   public allComents:Comentario[] = [];
-  public coments:Comentario[]=[];
+  public coments:Comentario[] = [];
   public iniciales:number = 3;
   public siguientes:number = 2;
   public actuales:number = 0;
@@ -34,7 +34,7 @@ export class ComentarioComponent implements OnInit{
         this.allComents = resp.data;
         this.comentsIniciales();
         console.log(this.coments);
-        console.log(this.coments[0].usuario?.nombre);
+        //console.log(this.coments[0].usuario?.nombre);
         
       });
   }

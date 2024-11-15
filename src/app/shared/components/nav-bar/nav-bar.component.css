@@ -1,7 +1,6 @@
 .nav {
     display: grid;
     align-items: center;
-    column-gap: 4rem;
     grid-template-columns: 1fr 7fr 1fr;
     background-color: transparent;
     position: sticky;
@@ -32,11 +31,17 @@
 }
 
 .header__logo {
-    width: 30rem;
+    width: 20rem;
 }
+
+
 
 .nav__logo > .logo{
     margin: 0;
+}
+
+.logo span{
+    color: var(--naranja);
 }
 
 .nav__links {
@@ -82,6 +87,9 @@
     font-weight: 700;
     transition-property: background-color;
     transition-duration: .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav__enlace:hover {

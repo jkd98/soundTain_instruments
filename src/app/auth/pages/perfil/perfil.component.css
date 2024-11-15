@@ -3,7 +3,23 @@
 } */
 
 .perfil-container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.perfil-card {
+  width: 80%;
+  background-color: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 20px;
+}
+
+@media (min-width:768px) {
+  .perfil-container {
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -13,80 +29,80 @@
   
   .perfil-card {
     width: 35%;
-    background-color: var(--blanco);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 20px;
   }
-  
-  .perfil-header {
-    margin-bottom: 15px;
-  }
-  
-  .perfil-imagen {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #4a90e2;
-    margin-bottom: 10px;
-  }
-  
-  .perfil-imagen img{
-    color: var(--azul);
-  }
+}
 
 
-  .perfil-header h2 {
-    font-size: 24px;
-    margin: 0;
-    color: var(--azul);
-  }
-  
-  .perfil-rol {
-    font-size: 14px;
-    color: var(--plata);
-    margin: 5px 0;
-  }
-  
-  .perfil-info {
-    text-align: left;
-    margin-top: 15px;
-    padding: 2rem 0;
-  }
-  
-  .perfil-info p {
-    font-size: 16px;
-    margin: 5px 0;
-    color: var(--azul);
-  }
-  
-  .perfil-boton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .perfil-boton:hover {
-    background-color: #357abd;
-  }
-  
-  .logo {
-    text-decoration: none;
-    font-weight:100;
-    color: var(--naranja);
-  }
-  
-  .logo span {
-    font-weight: 800;
-    color: var(--azul);
-    
-  }
+
+
+.perfil-header {
+  margin-bottom: 15px;
+}
+
+.perfil-imagen {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #4a90e2;
+  margin-bottom: 10px;
+}
+
+.perfil-imagen img {
+  color: var(--azul);
+}
+
+
+.perfil-header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: var(--azul);
+}
+
+.perfil-rol {
+  font-size: 14px;
+  color: var(--plata);
+  margin: 5px 0;
+}
+
+.perfil-info {
+  text-align: left;
+  margin-top: 15px;
+  padding: 2rem 0;
+}
+
+.perfil-info p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: var(--azul);
+}
+
+.perfil-boton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.perfil-boton:hover {
+  background-color: #357abd;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: 100;
+  color: var(--naranja);
+}
+
+.logo span {
+  font-weight: 800;
+  color: var(--azul);
+
+}
+
 /* Contenedor de la sección de historial de compras */
 .historial-compras {
   margin-top: 30px;
@@ -143,8 +159,10 @@
   margin: 5px 0;
   padding-left: 10px;
   color: #333;
-  white-space: pre-wrap; /* Permite que el contenido de 'pre' haga wrap */
-  flex: 1 1 100%; /* Cada 'pre' ocupa toda la línea */
+  white-space: pre-wrap;
+  /* Permite que el contenido de 'pre' haga wrap */
+  flex: 1 1 100%;
+  /* Cada 'pre' ocupa toda la línea */
 }
 
 .producto-item pre strong {

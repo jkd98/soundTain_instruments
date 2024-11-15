@@ -2,14 +2,18 @@
 
 
 <section>
-    <app-filters></app-filters>
+    <app-filters (filtrados)="getFiltrados($event)" ></app-filters>
 </section>
 
 @defer {
     <main class="bg-blanco">
         <div class="contenedor productos">
-            <h2 class="productos__title">Productos nuevos</h2>
-            <app-slider-productos [productos]="productosNvs"></app-slider-productos>
+            <h2 class="productos__title">{{ categoria !== '' ? categoria : 'Productos nuevos' }}</h2>
+            @if (productosFilt.length<=0) {
+                <app-slider-productos [productos]="productosNvs"></app-slider-productos>
+            }@else {
+                <app-slider-productos [productos]="productosFilt"></app-slider-productos>
+            }
         </div>
     </main>
 }

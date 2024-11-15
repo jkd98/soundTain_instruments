@@ -9,7 +9,9 @@ import { ProductoService } from '../../../shared/services/producto.service';
 })
 export class HomePageComponent implements OnInit{
   //
+  public productosFilt:Producto[]=[];
   public productosNvs:Producto[]=[];
+  public categoria:string = '';
   //
   constructor(private productoService:ProductoService) {  }
   //
@@ -27,7 +29,10 @@ export class HomePageComponent implements OnInit{
     );
   }
 
-  
+  getFiltrados(ev:any){
+    this.productosFilt = ev.productos;
+    this.categoria = ev.categoria;
+  }
 
 
 }

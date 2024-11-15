@@ -30,8 +30,8 @@
         <div class="right-section">
             <div class="buy-section">
                 <div class="quantity-section">
-                    <label for="quantity" class="quantity-label">Cantidad:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="50" value="1"
+                    <label for="cantidad" class="quantity-label">Cantidad:</label>
+                    <input #cantidad type="number" id="cantidad" name="cantidad" min="1" max="50" value="1"
                         class="quantity-input">
                 </div>
                 <div class="units-available">Disponibles: {{producto.cantidad}} unidades</div>
@@ -46,7 +46,7 @@
 
     <div class="related-products-section">
         <h2 class="productos__title">Productos relacionados</h2>
-        <app-slider-productos></app-slider-productos>
+        <app-slider-productos [productos]="productosFilt" ></app-slider-productos>
     </div>
     @defer () {
         <div class="comments-section">
