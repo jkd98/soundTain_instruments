@@ -1,7 +1,12 @@
+/* .bg-blanco{
+  background-color: var(--blanco);
+} */
+
 .perfil-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 2rem;
     height: 100%;
     padding: 20px;
   }
@@ -73,12 +78,14 @@
   
   .logo {
     text-decoration: none;
-    color: var(--azul);
     font-weight:100;
+    color: var(--naranja);
   }
-
+  
   .logo span {
     font-weight: 800;
+    color: var(--azul);
+    
   }
 /* Contenedor de la sección de historial de compras */
 .historial-compras {

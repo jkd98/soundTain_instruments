@@ -4,6 +4,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { VentasRoutingModule } from './ventas-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { HistorialComprasComponent } from './pages/historial-compras/historial-compras.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { HistorialComprasComponent } from './pages/historial-compras/historial-c
   imports: [
     CommonModule,
     VentasRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class VentasModule { }

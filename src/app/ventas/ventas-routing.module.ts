@@ -9,7 +9,7 @@ const routes: Routes = [
         component: CarritoComponent
     },
     {
-        path: 'historial-compras',
+        path: 'historial-ventas',
         component: HistorialComprasComponent
     },
     {

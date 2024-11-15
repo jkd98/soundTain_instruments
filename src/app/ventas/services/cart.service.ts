@@ -119,5 +119,16 @@ export class CartService {
     }
 
     return this.http.get<RespuestaProducto>(`${this.baseURL}/orden/historial-compras`,{ headers });
-  }  
+  }
+  
+  historialVentas(filtros: { creadoEn?: Date; precioMin?: number; precioMax?: number; nombre?: string }):Observable<RespuestaProducto> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+
+    return this.http.post<RespuestaProducto>(`${this.baseURL}/orden/historial-ventas`,filtros,{ headers });
+  }
 }
