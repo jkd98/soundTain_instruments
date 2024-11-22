@@ -10,7 +10,7 @@
     </div>
 
     <div class="nav__logo">
-        <h1 class="logo">SoundTain-<span>Instruments</span></h1>
+        <a routerLink="/clientes/inicio"><img src="/assets/Logo.png" alt="Logo"></a>
     </div>
 
 
@@ -19,7 +19,7 @@
         <a class="nav__enlace" routerLink="/clientes/instrumentos" routerLinkActive="active-link" >Instrumentos</a>
         <a class="nav__enlace" routerLink="/nosotros" routerLinkActive="active-link" >Nosotros</a>
         @if (getRol()==='ADMTlN') {
-            <a class="nav__enlace" routerLink="/administracion/" routerLinkActive="active-link" >Gestionar tienda</a>
+            <a class="nav__enlace" routerLink="/administracion/" routerLinkActive="active-link" >Gestionar productos</a>
         }
         @if (usr) {
             <div class="profile-menu">

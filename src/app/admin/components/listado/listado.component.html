@@ -5,6 +5,7 @@
 <table>
     <thead>
       <tr>
+        <th>Imagen</th>
         <th>Nombre del Producto</th>
         <th>Tipo</th>
         <th>Costo</th>
@@ -15,7 +16,8 @@
     <tbody>
       @for (product of prods; track $index) {
         <tr>
-          <td>{{ product.nombre }}</td>
+        <td><img [src]="product.imagen" alt="imagen del producto {{product.nombre}}"></td>
+        <td>{{ product.nombre }}</td>
         <td>{{ product.categoria }}</td>
         <td>{{ product.precio| currency }}</td>
         <td>{{ product.cantidad }}</td>

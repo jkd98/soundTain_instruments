@@ -23,6 +23,11 @@ td {
   border-bottom: 1px solid var(--naranja);
 }
 
+td img {
+  width: 35rem;
+  height: 18rem;
+}
+
 th {
   background-color: var(--naranja);
   color: var(--blanco);

@@ -43,8 +43,8 @@ body {
 }
 
 #carrito img.img-fluid {
-  width: 60px;
-  height: auto;
+  width: 28rem;
+  height: 20rem;
   border-radius: 5px;
 }
 
@@ -152,4 +152,6 @@ input[type="text"] {
   #carrito .text-end {
     font-size: 1rem;
   }
+
+
 }

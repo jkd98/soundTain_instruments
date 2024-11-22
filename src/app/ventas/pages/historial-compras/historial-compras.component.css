@@ -162,3 +162,8 @@
   font-size: 1.2rem;
   font-weight: 400;
 }
+
+pre.total{
+  color: var(--azul);
+  font-size: 1.8rem;
+}

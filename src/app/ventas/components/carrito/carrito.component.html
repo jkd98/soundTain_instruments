@@ -21,7 +21,7 @@
     
                             <tr id="carI{{$index}}">
                                 <td>
-                                    <!-- <img class="img-fluid" src="../assets/img/{{item.image}}.jpg" alt="imagen guitarra" /> -->
+                                    <img class="img-fluid" [src]="prod.producto.imagen" alt="imagen {{prod.producto.nombre}}" />
                                 </td>
                             <td>{{prod.producto.nombre}}</td>
                             <td class="fw-bold">

@@ -16,6 +16,7 @@ export class HistorialComprasComponent implements OnInit {
   public iniciales: number = 3;
   public siguientes: number = 3;
   public actuales: number = 0;
+  public total:number = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -51,13 +52,23 @@ export class HistorialComprasComponent implements OnInit {
   elementsIniciales() {
     this.onders = this.ordenes.slice(0, this.iniciales); // Muestra los primeros 3 productos
     this.actuales = this.iniciales;
+    this.calcTotal();
   }
 
   masElements() {
+    if(this.ordenes.length > this.onders.length){
     const nvOrders = this.ordenes.slice(this.actuales, this.actuales + this.siguientes);
     this.onders = [...this.onders, ...nvOrders]; // Añade los siguientes productos al array actual
     this.actuales += this.siguientes; // Actualiza el índice de productos mostrados
+    this.calcTotal();
+    }
   }
 
+  calcTotal():void {
+    for(const orden of this.onders){
+      const {total} = orden;
+      this.total += total;
+    }
+  }
 
 }
