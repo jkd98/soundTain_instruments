@@ -86,9 +86,15 @@ export class ProductoDetallesComponent implements OnInit {
     if (window.sessionStorage.getItem('rol')) {
       const cantidad: Producto['cantidad'] = this.cantidad.nativeElement.value;
       //console.log(cantidad);
+      if(cantidad! > this.producto.cantidad!){
+        this.messages = [{ severity: 'error', detail: "No puedes agregar más productos de los disponibles!" }]; 
+        return;
+      } 
       this.cartService.addToCart(this.getProd()!,cantidad ? cantidad : 1).
       subscribe(resp => {
         console.log(resp);
+        this.messages = [{ severity:'success', detail: "Producto agregado!" }]; 
+
       });
     } else {
       let url: string = `/clientes/instrumento/${this.id}`;
