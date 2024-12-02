@@ -4,6 +4,8 @@ import { RespuestaProducto } from '../../../shared/interfaces/respuestaProducto'
 import { Producto } from '../../../shared/interfaces/producto';
 import { Carrito } from '../../intefaces/carrito';
 import { Order } from '../../intefaces/orden';
+import { Usuario } from '../../../shared/interfaces/usuario';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-carrito',
@@ -15,11 +17,15 @@ export class CarritoComponent implements OnInit {
   public cart: Carrito['productos'] = [];
   public carTotal: Carrito['total'];
 
+  public showNotify: boolean = false;
+  public closed: boolean = false;
+  public usr!: Usuario;
+
   totalMonto: number = 250; // Puedes calcularlo dinámicamente
   @ViewChild('paypal', { static: true }) paypalElement!: ElementRef;
 
   ///
-  constructor(private cartSvs: CartService) {
+  constructor(private cartSvs: CartService, private authServ: AuthService) {
     // asi se instancia la señal, se agregan parentesis al final para obtener el valor
     //this.cart = this.cartSvs.carReadonly; 
     this.carTotal = 0;
@@ -35,8 +41,19 @@ export class CarritoComponent implements OnInit {
           console.log(resp);
         }
       );
-      
-      this.renderPayPalButton();
+
+    this.renderPayPalButton();
+
+    const log = window.sessionStorage.getItem('tkn') ? true : false;
+
+    if (log) {
+      this.authServ.obtenerPerfil()
+        .subscribe(resp => {
+          console.log(resp);
+          this.usr = resp.data;
+          if (this.usr.descuento?.checkNotify) this.showNotify = true;
+        })
+    }
   }
 
 
@@ -87,7 +104,7 @@ export class CarritoComponent implements OnInit {
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: this.carTotal.toFixed(2) // Asigna el total dinámicamente
+              value: this.carTotal * (1-this.usr.descuento!.descuento) // Asigna el total dinámicamente
             }
           }]
         });
@@ -120,7 +137,7 @@ export class CarritoComponent implements OnInit {
           imagen: prod.producto.imagen
         }
       }),
-      total: this.carTotal,
+      total: this.carTotal * (1-this.usr.descuento!.descuento),
       estado: 'procesando'
     };
 
@@ -128,10 +145,17 @@ export class CarritoComponent implements OnInit {
       .subscribe(resp => {
         console.log(resp);
       });
-    
+
     this.cartSvs.borrarTodo()
       .subscribe(resp => {
         console.log(resp);
       });
+  }
+
+  closeNotify():void{
+    // obtener cliente
+    this.closed = true;
+    console.log(this.closed);
+    //this.usr.descuento!.checkNotify=true;
   }
 }

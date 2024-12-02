@@ -1,10 +1,20 @@
+
 <header class="header">
 
     <div class="header__contenedor">
 
+        @if(showNotify){
+
+            <div class="notify" [class]="{'hiden':closed} "  >
+                <button (click)="closeNotify()" class="btn-close" >X</button>
+                <p class="notify__text">
+                    Has sido el afortunado de obtener un descuento del {{ (usr.descuento!.descuento)*100 }}% en nuestra tienda.
+                </p>
+            </div>
+        }            
         <!-- barra -->
         <app-nav-bar></app-nav-bar>
-
+        
         <!-- modelo -->
         <div class="modelo">
             <h1 class="modelo__nombre">Modelo VAI</h1>

@@ -78,4 +78,14 @@ export class AuthService {
 
   }
 
+  updateCheckNoti():Observable<RespuestaProducto> {
+    const token = sessionStorage.getItem('tkn');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.append('Authorization', `Bearer ${token}`);
+    }
+    return this.http.get<RespuestaProducto>(`${this.baseURL}/auth/notify`,{headers});
+
+  }
+
 }

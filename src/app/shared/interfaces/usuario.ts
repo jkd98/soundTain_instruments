@@ -9,4 +9,8 @@ export interface Usuario {
     token?: string
     confirmado?: boolean
     rol?: string
+    descuento?: {
+        checkNotify: boolean
+        descuento: number
+    }
 }
